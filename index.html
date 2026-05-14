@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#F4EFE6">
+  <title>Shivani Sudhir — UI/UX Designer</title>
+  <meta name="description" content="Shivani Sudhir is a product designer based in Sydney. She designs calm, considered mobile apps — including the entire Playpal Apps catalogue.">
+
+  <meta property="og:title" content="Shivani Sudhir — UI/UX Designer">
+  <meta property="og:description" content="Designer of calm, considered apps. Ten shipped products. Two platforms. One quiet practice.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://shivanisudhir.design/">
+
+  <link rel="icon" type="image/png" href="assets/icons/palettely.png">
+  <link rel="apple-touch-icon" href="assets/icons/palettely.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,0..100&family=Inter+Tight:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Custom cursor (desktop only, hidden on touch via CSS) -->
+  <div class="cursor" aria-hidden="true">
+    <div class="cursor-dot"></div>
+    <div class="cursor-ring"></div>
+  </div>
+
+  <!-- Paper grain overlay -->
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- ───────────────────────────── HEADER ───────────────────────────── -->
+  <header class="site-header" data-reveal>
+    <a href="#top" class="mark" aria-label="Shivani Sudhir, home">
+      <span class="mark-glyph">S</span>
+      <span class="mark-word">Shivani <em>Sudhir</em></span>
+    </a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="#work">Work</a>
+      <a href="#approach">Approach</a>
+      <a href="#about">About</a>
+      <a href="#contact" class="nav-contact">
+        <span class="nav-dot" aria-hidden="true"></span>
+        Available
+      </a>
+    </nav>
+  </header>
+
+  <!-- ───────────────────────────── HERO ───────────────────────────── -->
+  <section class="hero" id="top">
+    <div class="hero-bg" aria-hidden="true">
+      <img class="float-glyph" data-depth="0.05" src="assets/icons/palettely.png" style="top:7%;right:18%;width:48px;">
+      <img class="float-glyph" data-depth="0.09" src="assets/icons/nightbloom.png" style="top:30%;right:5%;width:44px;">
+      <img class="float-glyph" data-depth="0.07" src="assets/icons/utilify.png" style="top:60%;right:6%;width:64px;">
+      <img class="float-glyph" data-depth="0.06" src="assets/icons/astroorbit.png" style="bottom:18%;right:22%;width:40px;">
+      <img class="float-glyph" data-depth="0.04" src="assets/icons/canwasa.png" style="top:46%;right:14%;width:36px;">
+    </div>
+
+    <div class="hero-meta hero-meta-top">
+      <span class="kicker">Portfolio · 2017 — 2026</span>
+      <span class="kicker">Sydney, Australia <span class="dot-tiny">•</span> AEST</span>
+    </div>
+
+    <h1 class="hero-title" data-reveal>
+      <span class="line">Shivani</span>
+      <span class="line italic">Sudhir<span class="period">.</span></span>
+    </h1>
+
+    <p class="hero-sub" data-reveal data-reveal-delay="120">
+      A product designer composing
+      <em>calm, considered apps</em>
+      for people who use them every day.
+    </p>
+
+    <div class="hero-meta hero-meta-bottom" data-reveal data-reveal-delay="240">
+      <div class="meta-block">
+        <span class="meta-label">Practice</span>
+        <span class="meta-value">UI · UX · Brand</span>
+      </div>
+      <div class="meta-block">
+        <span class="meta-label">Shipped</span>
+        <span class="meta-value">10 apps · iOS &amp; Android</span>
+      </div>
+      <div class="meta-block">
+        <span class="meta-label">House</span>
+        <span class="meta-value">
+          <a class="quiet-link" href="https://playpalapps.github.io/" target="_blank" rel="noopener">Playpal Apps ↗</a>
+        </span>
+      </div>
+      <div class="meta-block">
+        <span class="meta-label">Status</span>
+        <span class="meta-value"><span class="pulse-dot"></span> Open to select work</span>
+      </div>
+    </div>
+
+    <a href="#work" class="scroll-cue" aria-label="Scroll to selected work">
+      <span class="cue-line"></span>
+      <span class="cue-label">Selected work</span>
+    </a>
+  </section>
+
+  <!-- ───────────────────────────── MARQUEE ───────────────────────────── -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Utilify</span><span class="diamond">◆</span>
+      <span>Canwasa</span><span class="diamond">◆</span>
+      <span>Night Bloom</span><span class="diamond">◆</span>
+      <span>Palettely</span><span class="diamond">◆</span>
+      <span>PaperLens</span><span class="diamond">◆</span>
+      <span>Astro Orbit</span><span class="diamond">◆</span>
+      <span>MergeRise</span><span class="diamond">◆</span>
+      <span>Fuzzy Pop</span><span class="diamond">◆</span>
+      <span>Time Zone Connect</span><span class="diamond">◆</span>
+      <span>Qito</span><span class="diamond">◆</span>
+      <!-- duplicate for seamless loop -->
+      <span>Utilify</span><span class="diamond">◆</span>
+      <span>Canwasa</span><span class="diamond">◆</span>
+      <span>Night Bloom</span><span class="diamond">◆</span>
+      <span>Palettely</span><span class="diamond">◆</span>
+      <span>PaperLens</span><span class="diamond">◆</span>
+      <span>Astro Orbit</span><span class="diamond">◆</span>
+      <span>MergeRise</span><span class="diamond">◆</span>
+      <span>Fuzzy Pop</span><span class="diamond">◆</span>
+      <span>Time Zone Connect</span><span class="diamond">◆</span>
+      <span>Qito</span><span class="diamond">◆</span>
+    </div>
+  </div>
+
+  <!-- ───────────────────────────── MANIFESTO ───────────────────────────── -->
+  <section class="manifesto">
+    <span class="section-no">§ 01</span>
+    <h2 class="section-title" data-reveal>
+      I design apps the way a&nbsp;<em>good editor</em> writes a sentence —
+      <span class="dim">spare, exact, and built to be read again tomorrow.</span>
+    </h2>
+    <div class="manifesto-grid">
+      <p data-reveal data-reveal-delay="80">
+        For the last several years I've been the resident designer for <a class="quiet-link" href="https://playpalapps.github.io/" target="_blank" rel="noopener">Playpal Apps</a> — a small house that ships beautifully crafted utilities, games, and wellness tools for iOS and Android. Ten apps. Two platforms. Every pixel, my responsibility.
+      </p>
+      <p data-reveal data-reveal-delay="160">
+        My work sits in the small movements: the cadence of a transition, the breath between paragraphs, the colour you didn't notice but felt. I believe restraint is the loudest design choice you can make — and that good products feel inevitable, not invented.
+      </p>
+    </div>
+  </section>
+
+  <!-- ───────────────────────────── SELECTED WORK ───────────────────────────── -->
+  <section class="work" id="work">
+    <header class="work-head">
+      <span class="section-no">§ 02</span>
+      <h2 class="section-title" data-reveal>Selected work, <em>2022 — 2026</em></h2>
+      <p class="section-lede" data-reveal data-reveal-delay="80">
+        Ten products, designed end-to-end across iOS and Android. Brand, system, every screen.
+      </p>
+    </header>
+
+    <!-- The case-study composition -->
+    <div class="work-grid">
+
+      <!-- 01 — UTILIFY (hero, full width) -->
+      <article class="case case-feature" data-app="utilify" data-reveal>
+        <a class="case-link" href="https://playpalapps.github.io/UtilifyApp/" target="_blank" rel="noopener" data-magnetic>
+          <div class="case-text">
+            <div class="case-no">01</div>
+            <div class="case-cat">Utilities · Flagship</div>
+            <h3 class="case-title">Utilify</h3>
+            <p class="case-lede"><em>Your everyday tech toolkit.</em> 18 tools, two platforms, one quiet interface — the kind of utility app you'd actually keep on the home screen.</p>
+            <ul class="case-credits">
+              <li><span>Role</span> Lead designer · UI, UX, brand, icon</li>
+              <li><span>System</span> Adaptive iOS/Android · light + dark</li>
+              <li><span>Year</span> 2024</li>
+            </ul>
+            <span class="case-cta">View case study <span class="arrow">→</span></span>
+          </div>
+          <div class="case-media case-media-utilify">
+            <img class="case-icon" src="assets/icons/utilify.png" alt="" loading="lazy">
+            <img class="case-shot" src="assets/work/01-utilify.png" alt="Utilify app — home screen showing the eighteen-tool grid" loading="lazy">
+            <span class="case-color" style="background:linear-gradient(135deg,#FB923C,#EF4444)"></span>
+          </div>
+        </a>
+      </article>
+
+      <!-- 02 — CANWASA -->
+      <article class="case case-half" data-app="canwasa" data-reveal>
+        <a class="case-link" href="https://playpalapps.github.io/canwasa/" target="_blank" rel="noopener" data-magnetic>
+          <div class="case-media">
+            <img class="case-shot" src="assets/work/02-canwasa.png" alt="Canwasa app — generative 4K wallpaper screen" loading="lazy">
+          </div>
+          <div class="case-text">
+            <div class="case-no">02</div>
+            <div class="case-cat">Creativity</div>
+            <h3 class="case-title">Canwasa</h3>
+            <p class="case-lede">Generative 4K abstract wallpapers — composed on-device, no cloud, no tracking. A piece of slow software.</p>
+            <span class="case-cta">Open ↗</span>
+          </div>
+        </a>
+      </article>
+
+      <!-- 03 — NIGHT BLOOM -->
+      <article class="case case-half" data-app="nightbloom" data-reveal>
+        <a class="case-link" href="https://playpalapps.github.io/NightBloom/" target="_blank" rel="noopener" data-magnetic>
+          <div class="case-media">
+            <img class="case-shot" src="assets/work/03-nightbloom.png" alt="Night Bloom app — sleep sounds player at night" loading="lazy">
+          </div>
+          <div class="case-text">
+            <div class="case-no">03</div>
+            <div class="case-cat">Wellness</div>
+            <h3 class="case-title">Night Bloom</h3>
+            <p class="case-lede">Sleep sounds, breathing exercises and rituals for restful nights. Designed to be used in the dark.</p>
+            <span class="case-cta">Open ↗</span>
+          </div>
+        </a>
+      </article>
+
+      <!-- 04 — PALETTELY (tall accent) -->
+      <article class="case case-third case-tall" data-app="palettely" data-reveal>
+        <a class="case-link" href="https://playpalapps.github.io/Palettely/" target="_blank" rel="noopener" data-magnetic>
+          <div class="case-media">
+            <img class="case-shot" src="assets/work/04-palettely.png" alt="Palettely app — palette extraction from a photograph" loading="lazy">
+          </div>
+          <div class="case-text">
+            <div class="case-no">04</div>
+            <div class="case-cat">Creativity</div>
+            <h3 class="case-title">Palettely</h3>
+            <p class="case-lede">A pocket tool for designers — pull palettes from any photograph, then assemble moodboards on-device.</p>
+            <span class="case-cta">Open ↗</span>
+          </div>
+        </a>
+      </article>
+
+      <!-- 05 — PAPERLENS -->
+      <article class="case case-third" data-app="paperlens" data-reveal>
+        <a class="case-link" href="https://playpalapps.github.io/PaperLens/" target="_blank" rel="noopener" data-magnetic>
+          <div class="case-media">
+            <img class="case-shot" src="assets/work/05-paperlens.png" alt="PaperLens — document scanning interface" loading="lazy">
+          </div>
+          <div class="case-text">
+            <div class="case-no">05</div>
+            <div class="case-cat">Productivity</div>
+            <h3 class="case-title">PaperLens</h3>
+            <p class="case-lede">Scan, sign, and protect documents — powered entirely by on-device AI.</p>
+            <span class="case-cta">Open ↗</span>
+          </div>
+        </a>
+      </article>
+
+      <!-- 06 — ASTRO ORBIT -->
+      <article class="case case-third" data-app="astroorbit" data-reveal>
+        <a class="case-link" href="https://playpalapps.github.io/AstroOrbit/" target="_blank" rel="noopener" data-magnetic>
+          <div class="case-media">
+            <img class="case-shot" src="assets/work/06-astroorbit.png" alt="Astro Orbit — arcade game in motion" loading="lazy">
+          </div>
+          <div class="case-text">
+            <div class="case-no">06</div>
+            <div class="case-cat">Arcade · Game</div>
+            <h3 class="case-title">Astro Orbit</h3>
+            <p class="case-lede">Defy gravity. Hop between orbital rings, dodge cosmic obstacles. A study in motion and feel.</p>
+            <span class="case-cta">Open ↗</span>
+          </div>
+        </a>
+      </article>
+
+      <!-- 07 — MERGERISE -->
+      <article class="case case-half" data-app="mergerise" data-reveal>
+        <a class="case-link" href="https://playpalapps.github.io/MergeRise/" target="_blank" rel="noopener" data-magnetic>
+          <div class="case-media">
+            <img class="case-shot" src="assets/work/07-mergerise.png" alt="MergeRise — puzzle merge with civilisation overlay" loading="lazy">
+          </div>
+          <div class="case-text">
+            <div class="case-no">07</div>
+            <div class="case-cat">Puzzle · Game</div>
+            <h3 class="case-title">MergeRise</h3>
+            <p class="case-lede">A 2048-style merge puzzle that quietly builds a civilisation on top — five thousand years in a thumb.</p>
+            <span class="case-cta">Open ↗</span>
+          </div>
+        </a>
+      </article>
+
+      <!-- 08 — FUZZY POP -->
+      <article class="case case-half" data-app="fuzzypop" data-reveal>
+        <a class="case-link" href="https://playpalapps.github.io/FuzzyPop/" target="_blank" rel="noopener" data-magnetic>
+          <div class="case-media">
+            <img class="case-shot" src="assets/work/08-fuzzypop.png" alt="Fuzzy Pop — child-safe bubble popping game" loading="lazy">
+          </div>
+          <div class="case-text">
+            <div class="case-no">08</div>
+            <div class="case-cat">Family · Game</div>
+            <h3 class="case-title">Fuzzy Pop</h3>
+            <p class="case-lede">Joyful, child-safe bubble-popping for little hands. No ads, no dark patterns, no rush.</p>
+            <span class="case-cta">Open ↗</span>
+          </div>
+        </a>
+      </article>
+
+      <!-- 09 — TIME ZONE CONNECT -->
+      <article class="case case-half" data-app="tzc" data-reveal>
+        <a class="case-link" href="https://playpalapps.github.io/TimezoneConnect/" target="_blank" rel="noopener" data-magnetic>
+          <div class="case-media">
+            <img class="case-shot" src="assets/work/09-tzc.png" alt="Time Zone Connect — overlapping work hours visualisation" loading="lazy">
+          </div>
+          <div class="case-text">
+            <div class="case-no">09</div>
+            <div class="case-cat">Productivity</div>
+            <h3 class="case-title">Time Zone Connect</h3>
+            <p class="case-lede">Find overlapping work hours and plan meetings across continents — a planet, finally legible.</p>
+            <span class="case-cta">Open ↗</span>
+          </div>
+        </a>
+      </article>
+
+      <!-- 10 — QITO -->
+      <article class="case case-half" data-app="qito" data-reveal>
+        <a class="case-link" href="https://playpalapps.github.io/Qito/" target="_blank" rel="noopener" data-magnetic>
+          <div class="case-media">
+            <img class="case-shot" src="assets/work/10-qito.png" alt="Qito — QR and barcode scanner" loading="lazy">
+          </div>
+          <div class="case-text">
+            <div class="case-no">10</div>
+            <div class="case-cat">Utilities</div>
+            <h3 class="case-title">Qito</h3>
+            <p class="case-lede">A fast QR and barcode scanner stripped of every bit of bloat — the platonic ideal of the form.</p>
+            <span class="case-cta">Open ↗</span>
+          </div>
+        </a>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ───────────────────────────── APPROACH ───────────────────────────── -->
+  <section class="approach" id="approach">
+    <header class="approach-head">
+      <span class="section-no">§ 03</span>
+      <h2 class="section-title" data-reveal>The four notes I keep <em>above the desk.</em></h2>
+    </header>
+
+    <ol class="principles">
+      <li class="principle" data-reveal>
+        <span class="principle-no">i.</span>
+        <h3>Restraint is a feature.</h3>
+        <p>An interface gets better the more I take away. The hardest line to draw is the one that doesn't appear in the final screen.</p>
+      </li>
+      <li class="principle" data-reveal data-reveal-delay="80">
+        <span class="principle-no">ii.</span>
+        <h3>Details are the design.</h3>
+        <p>A type ramp is not "polish." A spring curve is not "polish." A spacing rhythm is not "polish." They are the design.</p>
+      </li>
+      <li class="principle" data-reveal data-reveal-delay="160">
+        <span class="principle-no">iii.</span>
+        <h3>Pixels are policy.</h3>
+        <p>Every default tells the user what to do. I treat empty states, error copy, and confirmation moments as the place a product earns trust.</p>
+      </li>
+      <li class="principle" data-reveal data-reveal-delay="240">
+        <span class="principle-no">iv.</span>
+        <h3>Polish, <em>then</em> ship.</h3>
+        <p>I'd rather hold a release a week than ship a screen that's eighty per cent. Shipping a thing is also the first time you learn what it is.</p>
+      </li>
+    </ol>
+  </section>
+
+  <!-- ───────────────────────────── INDEX / NUMBERS ───────────────────────────── -->
+  <section class="ledger">
+    <div class="ledger-row">
+      <div class="ledger-cell">
+        <div class="ledger-no">10</div>
+        <div class="ledger-label">apps designed,<br>end to end</div>
+      </div>
+      <div class="ledger-cell">
+        <div class="ledger-no">2</div>
+        <div class="ledger-label">platforms,<br>iOS &amp; Android</div>
+      </div>
+      <div class="ledger-cell">
+        <div class="ledger-no">∞</div>
+        <div class="ledger-label">small decisions,<br>made on purpose</div>
+      </div>
+      <div class="ledger-cell">
+        <div class="ledger-no">1</div>
+        <div class="ledger-label">quiet practice,<br>one designer</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───────────────────────────── ABOUT ───────────────────────────── -->
+  <section class="about" id="about">
+    <header class="about-head">
+      <span class="section-no">§ 04</span>
+      <h2 class="section-title" data-reveal>About.</h2>
+    </header>
+    <div class="about-grid">
+      <div class="about-bio">
+        <p data-reveal>
+          I'm <strong>Shivani Sudhir</strong> — a product designer working from Sydney. I trained in design, moved into mobile, and have spent the last several years embedded with a small independent studio shipping apps real people pay for with their attention.
+        </p>
+        <p data-reveal data-reveal-delay="100">
+          I take projects all the way through: research and structure, brand and identity, the full UI system, motion, the App Store screenshots, the marketing site. I prefer to own the surface end-to-end so the seams disappear.
+        </p>
+        <p data-reveal data-reveal-delay="200">
+          Outside of design I read a lot, drink tea by the litre, and keep a sketchbook I never show anyone.
+        </p>
+      </div>
+      <aside class="about-side">
+        <div class="side-block">
+          <span class="side-label">Currently</span>
+          <div class="side-value">Lead designer, <a class="quiet-link" href="https://playpalapps.github.io/" target="_blank" rel="noopener">Playpal Apps</a></div>
+        </div>
+        <div class="side-block">
+          <span class="side-label">Tools of habit</span>
+          <div class="side-value">Figma · Pen &amp; paper · Procreate · After Effects</div>
+        </div>
+        <div class="side-block">
+          <span class="side-label">Strengths</span>
+          <div class="side-value">Mobile UI systems · Iconography · Motion · Brand</div>
+        </div>
+        <div class="side-block">
+          <span class="side-label">Quiet pursuits</span>
+          <div class="side-value">Type, ceramics, long walks, longer reads</div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ───────────────────────────── CONTACT ───────────────────────────── -->
+  <section class="contact" id="contact">
+    <span class="section-no">§ 05</span>
+    <p class="contact-lede" data-reveal>If you're building something thoughtful and need a designer who'll see it through —</p>
+    <a class="contact-mail" href="mailto:hello@shivanisudhir.design" data-magnetic data-reveal data-reveal-delay="120">
+      hello@shivanisudhir.design
+      <span class="contact-arrow">↗</span>
+    </a>
+    <div class="contact-meta">
+      <span>Open to select work · 2026</span>
+      <span class="dot-tiny">•</span>
+      <span>Reply within 48 hours</span>
+    </div>
+  </section>
+
+  <!-- ───────────────────────────── FOOTER ───────────────────────────── -->
+  <footer class="site-footer">
+    <div class="foot-left">
+      <span class="foot-mark">Shivani <em>Sudhir</em></span>
+      <span class="foot-sub">Designer · Sydney</span>
+    </div>
+    <div class="foot-center">
+      <span>© 2026 Shivani Sudhir.</span>
+      <span>Designed and coded with care.</span>
+    </div>
+    <div class="foot-right">
+      <a href="https://playpalapps.github.io/" target="_blank" rel="noopener">Playpal Apps ↗</a>
+      <a href="mailto:hello@shivanisudhir.design">Email</a>
+    </div>
+  </footer>
+
+  <script src="main.js" defer></script>
+</body>
+</html>
