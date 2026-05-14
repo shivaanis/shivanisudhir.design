@@ -5,7 +5,7 @@ Portfolio site for **Shivani Sudhir** — product designer, Sydney.
 ## Stack
 
 Plain HTML, CSS, and a single small JS file. No build step, no framework.
-Hosted on GitHub Pages at [shivanisudhir.design](https://shivanisudhir.design/).
+Hosted on GitHub Pages at [shivaanis.github.io/shivanisudhir.design](https://shivaanis.github.io/shivanisudhir.design/).
 
 ## Files
 
@@ -29,6 +29,6 @@ python3 -m http.server 8080
 
 ## Deploy
 
-Push to `main`. GitHub Pages serves the root automatically.
-Set the custom domain to `shivanisudhir.design` under repository
-*Settings → Pages*.
+Push to `main`. GitHub Pages serves the site automatically at
+`https://shivaanis.github.io/shivanisudhir.design/`. Source is set
+under repository *Settings → Pages* → branch `main` / root.
