@@ -517,41 +517,43 @@ a { color: inherit; text-decoration: none; }
 }
 .case-half .case-media,
 .case-third .case-media {
-  aspect-ratio: 16 / 11;
   overflow: hidden;
   background: var(--paper);
   position: relative;
   display: flex; align-items: center; justify-content: center;
 }
+.case-half .case-media        { aspect-ratio: 5 / 6; }
+.case-third .case-media       { aspect-ratio: 4 / 5; }
 .case-third.case-tall .case-media { aspect-ratio: 4 / 5; }
+
 .case-half .case-shot,
 .case-third .case-shot {
-  width: 62%;
+  width: auto;
   height: auto;
-  max-height: 96%;
+  max-width: 66%;
+  max-height: 88%;
   object-fit: contain;
-  filter: drop-shadow(0 28px 38px rgba(20, 14, 8, 0.30));
-  transform: translateY(8%);
+  filter: drop-shadow(0 30px 40px rgba(20, 14, 8, 0.34));
   transition: transform .8s var(--ease-smooth);
 }
-.case-link:hover .case-shot { transform: translateY(4%) scale(1.025); }
+.case-link:hover .case-shot { transform: translateY(-2%) scale(1.025); }
 
 .case-half .case-text,
 .case-third .case-text {
   padding: 26px 28px 28px;
 }
 
-/* Per-app media tints */
-.case[data-app="utilify"]    .case-media { background: radial-gradient(ellipse at 50% 100%, rgba(251,146,60,0.25), rgba(239,68,68,0.10) 70%, transparent 100%); }
-.case[data-app="canwasa"]    .case-media { background: radial-gradient(ellipse at 50% 100%, rgba(236,72,153,0.25), rgba(6,182,212,0.10) 70%, transparent 100%); }
-.case[data-app="nightbloom"] .case-media { background: radial-gradient(ellipse at 50% 100%, rgba(99,102,241,0.28), rgba(67,56,202,0.12) 70%, transparent 100%); }
-.case[data-app="palettely"]  .case-media { background: radial-gradient(ellipse at 50% 100%, rgba(249,115,22,0.22), rgba(139,92,246,0.16) 70%, transparent 100%); }
-.case[data-app="paperlens"]  .case-media { background: radial-gradient(ellipse at 50% 100%, rgba(37,99,235,0.22), rgba(6,182,212,0.10) 70%, transparent 100%); }
-.case[data-app="astroorbit"] .case-media { background: radial-gradient(ellipse at 50% 100%, rgba(124,58,237,0.26), rgba(99,102,241,0.10) 70%, transparent 100%); }
-.case[data-app="mergerise"]  .case-media { background: radial-gradient(ellipse at 50% 100%, rgba(16,185,129,0.22), rgba(20,184,166,0.10) 70%, transparent 100%); }
-.case[data-app="fuzzypop"]   .case-media { background: radial-gradient(ellipse at 50% 100%, rgba(245,158,11,0.22), rgba(236,72,153,0.14) 70%, transparent 100%); }
-.case[data-app="tzc"]        .case-media { background: radial-gradient(ellipse at 50% 100%, rgba(37,99,235,0.22), rgba(99,102,241,0.10) 70%, transparent 100%); }
-.case[data-app="qito"]       .case-media { background: radial-gradient(ellipse at 50% 100%, rgba(113,113,122,0.20), rgba(161,161,170,0.10) 70%, transparent 100%); }
+/* Per-app media tints — full-coverage colored panels, soft inner glow */
+.case[data-app="utilify"]    .case-media { background: radial-gradient(ellipse 110% 80% at 50% 78%, rgba(239,68,68,0.42), rgba(251,146,60,0.22) 60%, rgba(251,146,60,0.08) 100%); }
+.case[data-app="canwasa"]    .case-media { background: radial-gradient(ellipse 110% 80% at 50% 78%, rgba(236,72,153,0.38), rgba(6,182,212,0.16) 60%, rgba(6,182,212,0.06) 100%); }
+.case[data-app="nightbloom"] .case-media { background: radial-gradient(ellipse 110% 80% at 50% 78%, rgba(67,56,202,0.42), rgba(99,102,241,0.20) 60%, rgba(99,102,241,0.08) 100%); }
+.case[data-app="palettely"]  .case-media { background: radial-gradient(ellipse 110% 85% at 50% 75%, rgba(139,92,246,0.36), rgba(249,115,22,0.18) 55%, rgba(249,115,22,0.06) 100%); }
+.case[data-app="paperlens"]  .case-media { background: radial-gradient(ellipse 110% 80% at 50% 78%, rgba(37,99,235,0.40), rgba(6,182,212,0.18) 60%, rgba(6,182,212,0.06) 100%); }
+.case[data-app="astroorbit"] .case-media { background: radial-gradient(ellipse 110% 80% at 50% 78%, rgba(124,58,237,0.40), rgba(99,102,241,0.18) 60%, rgba(99,102,241,0.06) 100%); }
+.case[data-app="mergerise"]  .case-media { background: radial-gradient(ellipse 110% 80% at 50% 78%, rgba(16,185,129,0.36), rgba(20,184,166,0.18) 60%, rgba(20,184,166,0.06) 100%); }
+.case[data-app="fuzzypop"]   .case-media { background: radial-gradient(ellipse 110% 80% at 50% 78%, rgba(236,72,153,0.36), rgba(245,158,11,0.20) 55%, rgba(245,158,11,0.08) 100%); }
+.case[data-app="tzc"]        .case-media { background: radial-gradient(ellipse 110% 80% at 50% 78%, rgba(37,99,235,0.40), rgba(99,102,241,0.18) 60%, rgba(99,102,241,0.06) 100%); }
+.case[data-app="qito"]       .case-media { background: radial-gradient(ellipse 110% 80% at 50% 78%, rgba(82,82,91,0.34), rgba(113,113,122,0.18) 60%, rgba(161,161,170,0.06) 100%); }
 
 /* Card numbering, category, title, lede */
 .case-no {
