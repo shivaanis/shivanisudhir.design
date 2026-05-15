@@ -449,6 +449,123 @@
     }
   };
 
+  /* Reverse-engineered low-fi wireframes — the structural bones of each
+     real, shipped app. Coded, not images. */
+  const tile  = '<div class="wf-tile"><div class="wf-dot"></div><div class="wf-line w-80"></div></div>';
+  const box1  = '<div class="wf-box" style="aspect-ratio:1"></div>';
+  const STRUCTURE = {
+    utilify: {
+      wireframe: `<div class="wireframe">
+        <div class="wf-status"><span></span><span></span></div>
+        <div class="wf-row"><div class="wf-line title w-40"></div><div class="wf-fill"></div><div class="wf-circle" style="width:20px;height:20px"></div></div>
+        <div class="wf-pill w-full" style="height:30px"></div>
+        <div class="wf-grid" style="grid-template-columns:repeat(3,1fr)">${tile.repeat(9)}</div>
+        <div class="wf-fill"></div>
+        <div class="wf-row wf-center" style="gap:20px;padding-top:4px"><div class="wf-circle" style="width:22px;height:22px"></div><div class="wf-circle" style="width:22px;height:22px"></div><div class="wf-circle" style="width:22px;height:22px"></div></div>
+      </div>`,
+      note: 'The entire app is one screen. Every tool sits a single tap from the grid — no folders, no nesting — so the structure you see is the structure, and there is nowhere to get lost.'
+    },
+    canwasa: {
+      wireframe: `<div class="wireframe">
+        <div class="wf-status"><span></span><span></span></div>
+        <div class="wf-row"><div class="wf-line w-30"></div><div class="wf-fill"></div><div class="wf-circle" style="width:18px;height:18px"></div></div>
+        <div class="wf-box fill wf-fill" style="margin:2px 0"></div>
+        <div class="wf-row wf-center" style="gap:14px;padding:6px 0"><div class="wf-circle" style="width:26px;height:26px"></div><div class="wf-pill" style="width:88px;height:34px"></div><div class="wf-circle" style="width:26px;height:26px"></div></div>
+      </div>`,
+      note: 'One decision shaped the whole layout: the canvas takes the screen, and every control collapses to a single row at the foot — present when you reach for it, invisible when you don’t.'
+    },
+    nightbloom: {
+      wireframe: `<div class="wireframe is-dark">
+        <div class="wf-status"><span></span><span></span></div>
+        <div class="wf-line title w-50"></div>
+        <div class="wf-box fill" style="height:108px"></div>
+        <div class="wf-stack">
+          ${'<div class="wf-row"><div class="wf-circle" style="width:30px;height:30px"></div><div class="wf-stack wf-fill"><div class="wf-line w-60"></div><div class="wf-line w-30"></div></div></div>'.repeat(3)}
+        </div>
+        <div class="wf-fill"></div>
+        <div class="wf-line w-full" style="height:4px"></div>
+        <div class="wf-row wf-center" style="gap:16px;padding-top:4px"><div class="wf-circle" style="width:22px;height:22px"></div><div class="wf-circle fill" style="width:40px;height:40px"></div><div class="wf-circle" style="width:22px;height:22px"></div></div>
+      </div>`,
+      note: 'The wireframe is dark because the decision is dark. This screen was structured for a hand in a black room — large targets, a fixed player at the foot, nothing that needs aim.'
+    },
+    palettely: {
+      wireframe: `<div class="wireframe">
+        <div class="wf-status"><span></span><span></span></div>
+        <div class="wf-row"><div class="wf-line title w-40"></div><div class="wf-fill"></div><div class="wf-circle" style="width:18px;height:18px"></div></div>
+        <div class="wf-box fill" style="height:118px"></div>
+        <div class="wf-row" style="gap:5px">${'<div class="wf-box fill wf-fill" style="height:26px"></div>'.repeat(5)}</div>
+        <div class="wf-line w-30" style="margin-top:2px"></div>
+        <div class="wf-grid wf-fill" style="grid-template-columns:repeat(3,1fr)">${box1.repeat(6)}</div>
+      </div>`,
+      note: 'The flow reads top to bottom exactly as the task does — the photo, the palette it yields, the moodboard it feeds. The structure is the verb list.'
+    },
+    paperlens: {
+      wireframe: `<div class="wireframe">
+        <div class="wf-status"><span></span><span></span></div>
+        <div class="wf-box fill wf-fill" style="display:flex;align-items:center;justify-content:center">
+          <div class="wf-box" style="width:62%;height:62%;border-style:dashed"></div>
+        </div>
+        <div class="wf-row wf-center" style="padding:8px 0"><div class="wf-circle fill" style="width:48px;height:48px"></div></div>
+        <div class="wf-row" style="gap:6px">${'<div class="wf-box fill wf-fill" style="height:34px"></div>'.repeat(3)}</div>
+      </div>`,
+      note: 'The camera is the screen. Capture is the one large target. Everything else — the documents you’ve already made — waits quietly at the bottom edge.'
+    },
+    astroorbit: {
+      wireframe: `<div class="wireframe">
+        <div class="wf-status"><span></span><span></span></div>
+        <div class="wf-row"><div class="wf-line w-30"></div><div class="wf-fill"></div><div class="wf-circle" style="width:18px;height:18px"></div></div>
+        <div class="wf-box fill wf-fill" style="display:flex;align-items:center;justify-content:center">
+          <div class="wf-circle" style="width:72%;aspect-ratio:1;display:flex;align-items:center;justify-content:center"><div class="wf-circle fill" style="width:20%;aspect-ratio:1"></div></div>
+        </div>
+        <div class="wf-row wf-center" style="padding-top:6px"><div class="wf-pill" style="width:78px;height:24px"></div></div>
+      </div>`,
+      note: 'A game wireframe is mostly negative space. The job here was protecting the play field — the HUD shrinks to two corners so nothing competes with the thing you’re actually watching.'
+    },
+    mergerise: {
+      wireframe: `<div class="wireframe">
+        <div class="wf-status"><span></span><span></span></div>
+        <div class="wf-row" style="gap:8px"><div class="wf-box fill wf-fill" style="height:34px"></div><div class="wf-box fill wf-fill" style="height:34px"></div></div>
+        <div class="wf-grid" style="grid-template-columns:repeat(4,1fr)">${box1.repeat(16)}</div>
+        <div class="wf-fill"></div>
+        <div class="wf-box fill" style="height:30px"></div>
+      </div>`,
+      note: 'Two layers, cleanly separated: the 2048 grid is the structure’s centre and stays sacred; the civilisation lives in a strip above and below it, never crowding the board.'
+    },
+    fuzzypop: {
+      wireframe: `<div class="wireframe">
+        <div class="wf-status"><span></span></div>
+        <div class="wf-row"><div class="wf-fill"></div><div class="wf-circle" style="width:28px;height:28px"></div></div>
+        <div class="wf-box fill wf-fill" style="display:flex;flex-wrap:wrap;gap:12px;align-content:center;justify-content:center;padding:16px">
+          ${'<div class="wf-circle fill" style="width:32px;height:32px"></div>'.repeat(6)}
+        </div>
+      </div>`,
+      note: 'The wireframe is almost empty — and that is the design. One score, one corner, and a play field with nothing a small child could tap by mistake.'
+    },
+    tzc: {
+      wireframe: `<div class="wireframe">
+        <div class="wf-status"><span></span><span></span></div>
+        <div class="wf-row"><div class="wf-line title w-50"></div><div class="wf-fill"></div><div class="wf-circle" style="width:20px;height:20px"></div></div>
+        <div class="wf-stack">
+          ${'<div class="wf-row"><div class="wf-circle fill" style="width:26px;height:26px"></div><div class="wf-stack wf-fill"><div class="wf-line w-50"></div><div class="wf-line w-30"></div></div><div class="wf-line w-20"></div></div>'.repeat(4)}
+        </div>
+        <div class="wf-fill"></div>
+        <div class="wf-box" style="height:38px;display:flex;align-items:center;padding:0 6px"><div class="wf-box fill" style="height:22px;width:34%;margin-left:32%"></div></div>
+        <div class="wf-row wf-center" style="padding-top:4px"><div class="wf-pill fill" style="width:124px;height:30px"></div></div>
+      </div>`,
+      note: 'People stack at the top, the overlap band sits below them, and the answer — the best time — is the last thing on the screen. The layout is the sentence: who, when, go.'
+    },
+    qito: {
+      wireframe: `<div class="wireframe">
+        <div class="wf-status"><span></span><span></span></div>
+        <div class="wf-box fill wf-fill" style="display:flex;align-items:center;justify-content:center">
+          <div class="wf-box" style="width:56%;aspect-ratio:1;border-style:dashed"></div>
+        </div>
+        <div class="wf-row wf-center" style="padding-top:8px"><div class="wf-pill" style="width:108px;height:28px"></div></div>
+      </div>`,
+      note: 'One screen, one frame, one job. The viewport fills everything, the scan target is dead centre, and the result is the only thing that ever appears on top.'
+    }
+  };
+
   const overlay  = document.getElementById('caseStudy');
   const csScroll = overlay ? overlay.querySelector('.cs-scroll') : null;
   const csClose  = overlay ? overlay.querySelector('.cs-close') : null;
@@ -459,17 +576,15 @@
     return String(s).replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
   }
 
-  function buildCase(p) {
+  function buildCase(p, key) {
     const decisions = p.decisions.map((d) =>
       `<li><div><h4>${esc(d.h)}</h4><p>${esc(d.p)}</p></div></li>`
     ).join('');
+    const struct = STRUCTURE[key] || { wireframe: '', note: '' };
     return `
       <article class="cs-content" data-app="${esc(p.title)}">
-        <div class="cs-hero" style="background:${p.tint}">
-          <img class="cs-icon" src="${p.icon}" alt="" />
-          <img class="cs-shot" src="${p.shot}" alt="${esc(p.title)} — app interface" />
-        </div>
         <header class="cs-head">
+          <img class="cs-icon" src="${p.icon}" alt="" />
           <div class="cs-head-meta">
             <span class="cs-no">${p.n} / 10</span>
             <span class="cs-cat">${esc(p.cat)}</span>
@@ -477,6 +592,20 @@
           <h2 class="cs-title" id="csTitle">${esc(p.title)}</h2>
           <p class="cs-tag">${esc(p.tag)}</p>
         </header>
+        <section class="cs-structure">
+          <span class="cs-block-label">Structure → Surface</span>
+          <div class="cs-diptych" style="background:${p.tint}">
+            <figure class="cs-dip">
+              <div class="cs-dip-frame">${struct.wireframe}</div>
+              <figcaption><b>Low-fidelity</b> · the bones</figcaption>
+            </figure>
+            <figure class="cs-dip">
+              <div class="cs-dip-frame"><img class="cs-shot" src="${p.shot}" alt="${esc(p.title)} — shipped screen" /></div>
+              <figcaption><b>Shipped</b> · the surface</figcaption>
+            </figure>
+          </div>
+          <p class="cs-prose cs-struct-note">${esc(struct.note)}</p>
+        </section>
         <div class="cs-body">
           <section class="cs-block">
             <span class="cs-block-label">The brief</span>
@@ -507,7 +636,7 @@
     if (!p || !overlay) return;
     clearTimeout(closeTimer);
     lastTrigger = trigger || null;
-    csScroll.innerHTML = buildCase(p);
+    csScroll.innerHTML = buildCase(p, key);
     csScroll.scrollTop = 0;
     overlay.setAttribute('aria-hidden', 'false');
     doc.classList.add('cs-open');
