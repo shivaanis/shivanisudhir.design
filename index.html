@@ -2,16 +2,7 @@
 <html lang="en" data-theme="light">
 <head>
   <meta charset="utf-8">
-  <script>
-    document.documentElement.classList.add('js');
-    (function () {
-      try {
-        var t = localStorage.getItem('theme');
-        if (!t) t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-        document.documentElement.dataset.theme = t;
-      } catch (e) {}
-    })();
-  </script>
+  <script>document.documentElement.classList.add('js');</script>
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#F4EFE6">
   <title>Shivani Sudhir — UI/UX Designer</title>
@@ -45,14 +36,6 @@
   <!-- Scroll progress -->
   <div class="scroll-progress" aria-hidden="true"></div>
 
-  <!-- Custom cursor (desktop only, hidden on touch via CSS) -->
-  <div class="cursor" aria-hidden="true">
-    <div class="cursor-dot"></div>
-    <div class="cursor-ring"></div>
-  </div>
-
-  <!-- Paper grain overlay -->
-  <div class="grain" aria-hidden="true"></div>
 
   <!-- ───────────────────────────── HEADER ───────────────────────────── -->
   <header class="site-header">
@@ -65,9 +48,6 @@
       <a href="#craft" data-spy="craft">Craft</a>
       <a href="#approach" data-spy="approach">Approach</a>
       <a href="#about" data-spy="about">About</a>
-      <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle light or dark mode">
-        <span class="theme-icon" aria-hidden="true"></span>
-      </button>
       <a href="#contact" class="nav-contact" data-spy="contact">
         <span class="nav-dot" aria-hidden="true"></span>
         Available

@@ -160,69 +160,17 @@
   }
 
   /* ============================================================
-     6 · THEME TOGGLE — light / dark, View-Transitioned
-     ============================================================ */
-  const themeToggle = document.querySelector('[data-theme-toggle]');
-  if (themeToggle) {
-    themeToggle.addEventListener('click', () => {
-      const next = doc.dataset.theme === 'dark' ? 'light' : 'dark';
-      const apply = () => { doc.dataset.theme = next; };
-      if (document.startViewTransition && !reduced) {
-        document.startViewTransition(apply);
-      } else {
-        apply();
-      }
-      try { localStorage.setItem('theme', next); } catch (e) {}
-    });
-  }
-
-  /* ============================================================
-     7 · CUSTOM CURSOR + MAGNETIC + HERO LETTER FIELD
+     6 · MOUSE TRACKING + MAGNETIC + HERO LETTER FIELD
+        (Native cursor — no custom follower, no perceived lag.)
      ============================================================ */
   let cursorPos = { x: innerWidth / 2, y: innerHeight / 2 };
 
   if (!isCoarse && !reduced) {
-    const cursor = document.querySelector('.cursor');
-    const dot    = document.querySelector('.cursor-dot');
-    const ring   = document.querySelector('.cursor-ring');
-
-    let dx = cursorPos.x, dy = cursorPos.y;
-    let rx = cursorPos.x, ry = cursorPos.y;
-
     window.addEventListener('mousemove', (e) => {
       cursorPos.x = e.clientX; cursorPos.y = e.clientY;
     }, { passive: true });
 
-    document.addEventListener('mousedown', () => cursor && cursor.classList.add('is-down'));
-    document.addEventListener('mouseup',   () => cursor && cursor.classList.remove('is-down'));
-
-    const animateCursor = () => {
-      dx += (cursorPos.x - dx) * 0.35;
-      dy += (cursorPos.y - dy) * 0.35;
-      rx += (cursorPos.x - rx) * 0.18;
-      ry += (cursorPos.y - ry) * 0.18;
-      if (dot)  dot.style.transform  = `translate(${dx}px, ${dy}px) translate(-50%, -50%)`;
-      if (ring) ring.style.transform = `translate(${rx}px, ${ry}px) translate(-50%, -50%)`;
-      raf(animateCursor);
-    };
-    raf(animateCursor);
-
-    // Cursor hover state — works on dynamically-added nodes too
-    function bindCursorHovers(root) {
-      root.querySelectorAll('a, button, [role="link"], [data-magnetic]').forEach((el) => {
-        if (el.dataset.cursorBound) return;
-        el.dataset.cursorBound = '1';
-        el.addEventListener('mouseenter', () => cursor && cursor.classList.add('is-hover'));
-        el.addEventListener('mouseleave', () => {
-          cursor && cursor.classList.remove('is-hover');
-          if (el.dataset.magnetic !== undefined) el.style.transform = '';
-        });
-      });
-    }
-    bindCursorHovers(document);
-    window.__bindCursorHovers = bindCursorHovers;
-
-    // Magnetic pull
+    // Magnetic pull on opted-in elements
     document.querySelectorAll('[data-magnetic]').forEach((el) => {
       const STRENGTH = el.classList.contains('case-link') ? 0.05 : 0.22;
       el.addEventListener('mousemove', (e) => {
@@ -231,6 +179,7 @@
         const y = e.clientY - (r.top  + r.height / 2);
         el.style.transform = `translate3d(${x * STRENGTH}px, ${y * STRENGTH}px, 0)`;
       });
+      el.addEventListener('mouseleave', () => { el.style.transform = ''; });
     });
 
     // Hero letter field — proximity-driven offset + variable weight
@@ -507,7 +456,6 @@
     csScroll.scrollTop = 0;
     overlay.setAttribute('aria-hidden', 'false');
     doc.classList.add('cs-open');
-    if (window.__bindCursorHovers) window.__bindCursorHovers(overlay);
     const showOpen = () => overlay.classList.add('is-open');
     raf(() => raf(showOpen));
     setTimeout(showOpen, 40);   // fallback for backgrounded tabs / paused rAF
@@ -665,7 +613,6 @@
     function step() {
       ctx.clearRect(0, 0, canvasW, canvasH);
       const t = performance.now() * 0.0006;
-      const cursorEl = document.querySelector('.cursor');
       let anyHovered = false;
 
       for (const p of particles) {
@@ -713,8 +660,8 @@
         ctx.drawImage(p.img, -s / 2, -s / 2, s, s);
         ctx.restore();
       }
-      // Hint the custom cursor when over an icon
-      if (cursorEl) cursorEl.classList.toggle('is-hover', anyHovered);
+      // Hint the native cursor when over a clickable icon
+      heroCanvas.style.cursor = anyHovered ? 'pointer' : 'default';
       raf(step);
     }
 
