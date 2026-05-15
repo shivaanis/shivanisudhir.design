@@ -2,6 +2,7 @@
 <html lang="en" data-theme="light">
 <head>
   <meta charset="utf-8">
+  <script>document.documentElement.classList.add('js');</script>
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#F4EFE6">
   <title>Shivani Sudhir — UI/UX Designer</title>
@@ -23,6 +24,18 @@
 </head>
 <body>
 
+  <!-- ───────────────────────────── INTRO / LOAD CURTAIN ───────────────────────────── -->
+  <div class="intro" aria-hidden="true">
+    <div class="intro-inner">
+      <span class="intro-cap">Portfolio — Sydney</span>
+      <span class="intro-mark">Shivani <em>Sudhir</em></span>
+      <span class="intro-rule"></span>
+    </div>
+  </div>
+
+  <!-- Scroll progress -->
+  <div class="scroll-progress" aria-hidden="true"></div>
+
   <!-- Custom cursor (desktop only, hidden on touch via CSS) -->
   <div class="cursor" aria-hidden="true">
     <div class="cursor-dot"></div>
@@ -33,16 +46,16 @@
   <div class="grain" aria-hidden="true"></div>
 
   <!-- ───────────────────────────── HEADER ───────────────────────────── -->
-  <header class="site-header" data-reveal>
+  <header class="site-header">
     <a href="#top" class="mark" aria-label="Shivani Sudhir, home">
       <span class="mark-glyph">S</span>
       <span class="mark-word">Shivani <em>Sudhir</em></span>
     </a>
     <nav class="site-nav" aria-label="Primary">
-      <a href="#work">Work</a>
-      <a href="#approach">Approach</a>
-      <a href="#about">About</a>
-      <a href="#contact" class="nav-contact">
+      <a href="#work" data-spy="work">Work</a>
+      <a href="#approach" data-spy="approach">Approach</a>
+      <a href="#about" data-spy="about">About</a>
+      <a href="#contact" class="nav-contact" data-spy="contact">
         <span class="nav-dot" aria-hidden="true"></span>
         Available
       </a>
@@ -52,21 +65,21 @@
   <!-- ───────────────────────────── HERO ───────────────────────────── -->
   <section class="hero" id="top">
     <div class="hero-bg" aria-hidden="true">
-      <img class="float-glyph" data-depth="0.05" src="assets/icons/palettely.png" style="top:7%;right:18%;width:48px;">
-      <img class="float-glyph" data-depth="0.09" src="assets/icons/nightbloom.png" style="top:30%;right:5%;width:44px;">
-      <img class="float-glyph" data-depth="0.07" src="assets/icons/utilify.png" style="top:60%;right:6%;width:64px;">
-      <img class="float-glyph" data-depth="0.06" src="assets/icons/astroorbit.png" style="bottom:18%;right:22%;width:40px;">
-      <img class="float-glyph" data-depth="0.04" src="assets/icons/canwasa.png" style="top:46%;right:14%;width:36px;">
+      <img class="float-glyph" data-depth="0.05" src="assets/icons/palettely.png" style="top:7%;right:18%;width:48px;" alt="">
+      <img class="float-glyph" data-depth="0.09" src="assets/icons/nightbloom.png" style="top:30%;right:5%;width:44px;" alt="">
+      <img class="float-glyph" data-depth="0.07" src="assets/icons/utilify.png" style="top:60%;right:6%;width:64px;" alt="">
+      <img class="float-glyph" data-depth="0.06" src="assets/icons/astroorbit.png" style="bottom:18%;right:22%;width:40px;" alt="">
+      <img class="float-glyph" data-depth="0.04" src="assets/icons/canwasa.png" style="top:46%;right:14%;width:36px;" alt="">
     </div>
 
     <div class="hero-meta hero-meta-top">
       <span class="kicker">Portfolio · 2017 — 2026</span>
-      <span class="kicker">Sydney, Australia <span class="dot-tiny">•</span> AEST</span>
+      <span class="kicker">Sydney, Australia <span class="dot-tiny">•</span> <span data-clock>—:—</span> AEST</span>
     </div>
 
-    <h1 class="hero-title" data-reveal>
-      <span class="line">Shivani</span>
-      <span class="line italic">Sudhir<span class="period">.</span></span>
+    <h1 class="hero-title" aria-label="Shivani Sudhir." data-split>
+      <span class="line"><span class="word" data-soft="50">Shivani</span></span>
+      <span class="line"><span class="word italic" data-soft="100">Sudhir.</span></span>
     </h1>
 
     <p class="hero-sub" data-reveal data-reveal-delay="120">
@@ -152,7 +165,7 @@
       <span class="section-no">§ 02</span>
       <h2 class="section-title" data-reveal>Selected work, <em>2022 — 2026</em></h2>
       <p class="section-lede" data-reveal data-reveal-delay="80">
-        Ten products, designed end-to-end across iOS and Android. Brand, system, every screen.
+        Ten products, designed end-to-end across iOS and Android. Brand, system, every screen. Open any one for the case study.
       </p>
     </header>
 
@@ -161,7 +174,7 @@
 
       <!-- 01 — UTILIFY (hero, full width) -->
       <article class="case case-feature" data-app="utilify" data-reveal>
-        <a class="case-link" href="https://playpalapps.github.io/UtilifyApp/" target="_blank" rel="noopener" data-magnetic>
+        <a class="case-link" href="https://playpalapps.github.io/UtilifyApp/" target="_blank" rel="noopener" data-magnetic data-case="utilify">
           <div class="case-text">
             <div class="case-no">01</div>
             <div class="case-cat">Utilities · Flagship</div>
@@ -172,7 +185,7 @@
               <li><span>System</span> Adaptive iOS/Android · light + dark</li>
               <li><span>Year</span> 2024</li>
             </ul>
-            <span class="case-cta">View case study <span class="arrow">→</span></span>
+            <span class="case-cta">Read the case study <span class="arrow">→</span></span>
           </div>
           <div class="case-media case-media-utilify">
             <img class="case-icon" src="assets/icons/utilify.png" alt="" loading="lazy">
@@ -184,7 +197,7 @@
 
       <!-- 02 — CANWASA -->
       <article class="case case-half" data-app="canwasa" data-reveal>
-        <a class="case-link" href="https://playpalapps.github.io/canwasa/" target="_blank" rel="noopener" data-magnetic>
+        <a class="case-link" href="https://playpalapps.github.io/canwasa/" target="_blank" rel="noopener" data-magnetic data-case="canwasa">
           <div class="case-media">
             <img class="case-shot" src="assets/work/02-canwasa.png" alt="Canwasa app — generative 4K wallpaper screen" loading="lazy">
           </div>
@@ -193,14 +206,14 @@
             <div class="case-cat">Creativity</div>
             <h3 class="case-title">Canwasa</h3>
             <p class="case-lede">Generative 4K abstract wallpapers — composed on-device, no cloud, no tracking. A piece of slow software.</p>
-            <span class="case-cta">Open ↗</span>
+            <span class="case-cta">Case study <span class="arrow">→</span></span>
           </div>
         </a>
       </article>
 
       <!-- 03 — NIGHT BLOOM -->
       <article class="case case-half" data-app="nightbloom" data-reveal>
-        <a class="case-link" href="https://playpalapps.github.io/NightBloom/" target="_blank" rel="noopener" data-magnetic>
+        <a class="case-link" href="https://playpalapps.github.io/NightBloom/" target="_blank" rel="noopener" data-magnetic data-case="nightbloom">
           <div class="case-media">
             <img class="case-shot" src="assets/work/03-nightbloom.png" alt="Night Bloom app — sleep sounds player at night" loading="lazy">
           </div>
@@ -209,14 +222,14 @@
             <div class="case-cat">Wellness</div>
             <h3 class="case-title">Night Bloom</h3>
             <p class="case-lede">Sleep sounds, breathing exercises and rituals for restful nights. Designed to be used in the dark.</p>
-            <span class="case-cta">Open ↗</span>
+            <span class="case-cta">Case study <span class="arrow">→</span></span>
           </div>
         </a>
       </article>
 
       <!-- 04 — PALETTELY (tall accent) -->
       <article class="case case-third case-tall" data-app="palettely" data-reveal>
-        <a class="case-link" href="https://playpalapps.github.io/Palettely/" target="_blank" rel="noopener" data-magnetic>
+        <a class="case-link" href="https://playpalapps.github.io/Palettely/" target="_blank" rel="noopener" data-magnetic data-case="palettely">
           <div class="case-media">
             <img class="case-shot" src="assets/work/04-palettely.png" alt="Palettely app — palette extraction from a photograph" loading="lazy">
           </div>
@@ -225,14 +238,14 @@
             <div class="case-cat">Creativity</div>
             <h3 class="case-title">Palettely</h3>
             <p class="case-lede">A pocket tool for designers — pull palettes from any photograph, then assemble moodboards on-device.</p>
-            <span class="case-cta">Open ↗</span>
+            <span class="case-cta">Case study <span class="arrow">→</span></span>
           </div>
         </a>
       </article>
 
       <!-- 05 — PAPERLENS -->
       <article class="case case-third" data-app="paperlens" data-reveal>
-        <a class="case-link" href="https://playpalapps.github.io/PaperLens/" target="_blank" rel="noopener" data-magnetic>
+        <a class="case-link" href="https://playpalapps.github.io/PaperLens/" target="_blank" rel="noopener" data-magnetic data-case="paperlens">
           <div class="case-media">
             <img class="case-shot" src="assets/work/05-paperlens.png" alt="PaperLens — document scanning interface" loading="lazy">
           </div>
@@ -241,14 +254,14 @@
             <div class="case-cat">Productivity</div>
             <h3 class="case-title">PaperLens</h3>
             <p class="case-lede">Scan, sign, and protect documents — powered entirely by on-device AI.</p>
-            <span class="case-cta">Open ↗</span>
+            <span class="case-cta">Case study <span class="arrow">→</span></span>
           </div>
         </a>
       </article>
 
       <!-- 06 — ASTRO ORBIT -->
       <article class="case case-third" data-app="astroorbit" data-reveal>
-        <a class="case-link" href="https://playpalapps.github.io/AstroOrbit/" target="_blank" rel="noopener" data-magnetic>
+        <a class="case-link" href="https://playpalapps.github.io/AstroOrbit/" target="_blank" rel="noopener" data-magnetic data-case="astroorbit">
           <div class="case-media">
             <img class="case-shot" src="assets/work/06-astroorbit.png" alt="Astro Orbit — arcade game in motion" loading="lazy">
           </div>
@@ -257,14 +270,14 @@
             <div class="case-cat">Arcade · Game</div>
             <h3 class="case-title">Astro Orbit</h3>
             <p class="case-lede">Defy gravity. Hop between orbital rings, dodge cosmic obstacles. A study in motion and feel.</p>
-            <span class="case-cta">Open ↗</span>
+            <span class="case-cta">Case study <span class="arrow">→</span></span>
           </div>
         </a>
       </article>
 
       <!-- 07 — MERGERISE -->
       <article class="case case-half" data-app="mergerise" data-reveal>
-        <a class="case-link" href="https://playpalapps.github.io/MergeRise/" target="_blank" rel="noopener" data-magnetic>
+        <a class="case-link" href="https://playpalapps.github.io/MergeRise/" target="_blank" rel="noopener" data-magnetic data-case="mergerise">
           <div class="case-media">
             <img class="case-shot" src="assets/work/07-mergerise.png" alt="MergeRise — puzzle merge with civilisation overlay" loading="lazy">
           </div>
@@ -273,14 +286,14 @@
             <div class="case-cat">Puzzle · Game</div>
             <h3 class="case-title">MergeRise</h3>
             <p class="case-lede">A 2048-style merge puzzle that quietly builds a civilisation on top — five thousand years in a thumb.</p>
-            <span class="case-cta">Open ↗</span>
+            <span class="case-cta">Case study <span class="arrow">→</span></span>
           </div>
         </a>
       </article>
 
       <!-- 08 — FUZZY POP -->
       <article class="case case-half" data-app="fuzzypop" data-reveal>
-        <a class="case-link" href="https://playpalapps.github.io/FuzzyPop/" target="_blank" rel="noopener" data-magnetic>
+        <a class="case-link" href="https://playpalapps.github.io/FuzzyPop/" target="_blank" rel="noopener" data-magnetic data-case="fuzzypop">
           <div class="case-media">
             <img class="case-shot" src="assets/work/08-fuzzypop.png" alt="Fuzzy Pop — child-safe bubble popping game" loading="lazy">
           </div>
@@ -289,14 +302,14 @@
             <div class="case-cat">Family · Game</div>
             <h3 class="case-title">Fuzzy Pop</h3>
             <p class="case-lede">Joyful, child-safe bubble-popping for little hands. No ads, no dark patterns, no rush.</p>
-            <span class="case-cta">Open ↗</span>
+            <span class="case-cta">Case study <span class="arrow">→</span></span>
           </div>
         </a>
       </article>
 
       <!-- 09 — TIME ZONE CONNECT -->
       <article class="case case-half" data-app="tzc" data-reveal>
-        <a class="case-link" href="https://playpalapps.github.io/TimezoneConnect/" target="_blank" rel="noopener" data-magnetic>
+        <a class="case-link" href="https://playpalapps.github.io/TimezoneConnect/" target="_blank" rel="noopener" data-magnetic data-case="tzc">
           <div class="case-media">
             <img class="case-shot" src="assets/work/09-tzc.png" alt="Time Zone Connect — overlapping work hours visualisation" loading="lazy">
           </div>
@@ -305,14 +318,14 @@
             <div class="case-cat">Productivity</div>
             <h3 class="case-title">Time Zone Connect</h3>
             <p class="case-lede">Find overlapping work hours and plan meetings across continents — a planet, finally legible.</p>
-            <span class="case-cta">Open ↗</span>
+            <span class="case-cta">Case study <span class="arrow">→</span></span>
           </div>
         </a>
       </article>
 
       <!-- 10 — QITO -->
       <article class="case case-half" data-app="qito" data-reveal>
-        <a class="case-link" href="https://playpalapps.github.io/Qito/" target="_blank" rel="noopener" data-magnetic>
+        <a class="case-link" href="https://playpalapps.github.io/Qito/" target="_blank" rel="noopener" data-magnetic data-case="qito">
           <div class="case-media">
             <img class="case-shot" src="assets/work/10-qito.png" alt="Qito — QR and barcode scanner" loading="lazy">
           </div>
@@ -321,7 +334,7 @@
             <div class="case-cat">Utilities</div>
             <h3 class="case-title">Qito</h3>
             <p class="case-lede">A fast QR and barcode scanner stripped of every bit of bloat — the platonic ideal of the form.</p>
-            <span class="case-cta">Open ↗</span>
+            <span class="case-cta">Case study <span class="arrow">→</span></span>
           </div>
         </a>
       </article>
@@ -363,20 +376,20 @@
   <!-- ───────────────────────────── INDEX / NUMBERS ───────────────────────────── -->
   <section class="ledger">
     <div class="ledger-row">
-      <div class="ledger-cell">
-        <div class="ledger-no">10</div>
+      <div class="ledger-cell" data-reveal>
+        <div class="ledger-no" data-count="10">10</div>
         <div class="ledger-label">apps designed,<br>end to end</div>
       </div>
-      <div class="ledger-cell">
-        <div class="ledger-no">2</div>
+      <div class="ledger-cell" data-reveal data-reveal-delay="80">
+        <div class="ledger-no" data-count="2">2</div>
         <div class="ledger-label">platforms,<br>iOS &amp; Android</div>
       </div>
-      <div class="ledger-cell">
+      <div class="ledger-cell" data-reveal data-reveal-delay="160">
         <div class="ledger-no">∞</div>
         <div class="ledger-label">small decisions,<br>made on purpose</div>
       </div>
-      <div class="ledger-cell">
-        <div class="ledger-no">1</div>
+      <div class="ledger-cell" data-reveal data-reveal-delay="240">
+        <div class="ledger-no" data-count="1">1</div>
         <div class="ledger-label">quiet practice,<br>one designer</div>
       </div>
     </div>
@@ -401,19 +414,19 @@
         </p>
       </div>
       <aside class="about-side">
-        <div class="side-block">
+        <div class="side-block" data-reveal>
           <span class="side-label">Currently</span>
           <div class="side-value">Lead designer, <a class="quiet-link" href="https://playpalapps.github.io/" target="_blank" rel="noopener">Playpal Apps</a></div>
         </div>
-        <div class="side-block">
+        <div class="side-block" data-reveal data-reveal-delay="60">
           <span class="side-label">Tools of habit</span>
           <div class="side-value">Figma · Pen &amp; paper · Procreate · After Effects</div>
         </div>
-        <div class="side-block">
+        <div class="side-block" data-reveal data-reveal-delay="120">
           <span class="side-label">Strengths</span>
           <div class="side-value">Mobile UI systems · Iconography · Motion · Brand</div>
         </div>
-        <div class="side-block">
+        <div class="side-block" data-reveal data-reveal-delay="180">
           <span class="side-label">Quiet pursuits</span>
           <div class="side-value">Type, ceramics, long walks, longer reads</div>
         </div>
@@ -448,9 +461,23 @@
     </div>
     <div class="foot-right">
       <a href="https://playpalapps.github.io/" target="_blank" rel="noopener">Playpal Apps ↗</a>
-      <a href="mailto:hello@shivanisudhir.design">Email</a>
+      <a href="mailto:shivaanisudhir@gmail.com">Email</a>
     </div>
   </footer>
+
+  <!-- ───────────────────────────── CASE STUDY OVERLAY ───────────────────────────── -->
+  <div class="case-study" id="caseStudy" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="csTitle">
+    <div class="cs-backdrop" data-cs-close></div>
+    <div class="cs-panel" role="document">
+      <button class="cs-close" type="button" aria-label="Close case study" data-cs-close>
+        <span class="cs-close-x" aria-hidden="true"></span>
+        <span class="cs-close-label">Close</span>
+      </button>
+      <div class="cs-scroll">
+        <!-- JS injects .cs-content here -->
+      </div>
+    </div>
+  </div>
 
   <script src="main.js" defer></script>
 </body>

@@ -288,18 +288,30 @@ a { color: inherit; text-decoration: none; }
   font-variation-settings: 'opsz' 144, 'SOFT' 50;
   align-self: center;
 }
-.hero-title .line { display: block; }
-.hero-title .italic {
+.hero-title .line {
+  display: block;
+  overflow: hidden;
+  padding-block: 0.07em;
+}
+.hero-title .line:last-child {
+  padding-left: clamp(40px, 8vw, 120px);
+}
+.hero-title .word { display: inline-block; }
+.hero-title .word.italic {
   font-style: italic;
   font-variation-settings: 'opsz' 144, 'SOFT' 100;
   color: var(--accent);
-  padding-left: clamp(40px, 8vw, 120px);
 }
-.hero-title .period {
-  color: var(--ink);
+.hero-title .ltr {
   display: inline-block;
-  transform: translateY(-0.05em);
+  will-change: transform, translate;
 }
+.js .hero-title .ltr {
+  translate: 0 112%;
+  transition: translate .92s var(--ease-smooth);
+  transition-delay: calc(var(--i, 0) * 26ms);
+}
+.hero-title.is-revealed .ltr { translate: 0 0; }
 
 .hero-sub {
   font-family: var(--serif);
@@ -387,7 +399,7 @@ a { color: inherit; text-decoration: none; }
   .hero { padding: 110px 24px 48px; }
   .hero-meta-bottom { grid-template-columns: repeat(2, 1fr); gap: 20px 16px; padding-top: 20px; }
   .scroll-cue { position: static; margin-top: 8px; }
-  .hero-title .italic { padding-left: 28px; }
+  .hero-title .line:last-child { padding-left: 28px; }
   .float-glyph { display: none; }
 
   /* Tighten nav: keep mark + contact pill only */
@@ -536,7 +548,7 @@ a { color: inherit; text-decoration: none; }
   filter: drop-shadow(0 30px 40px rgba(20, 14, 8, 0.34));
   transition: transform .8s var(--ease-smooth);
 }
-.case-link:hover .case-shot { transform: translateY(-2%) scale(1.025); }
+.case-link:hover .case-shot { transform: scale(1.04); }
 
 .case-half .case-text,
 .case-third .case-text {
@@ -962,23 +974,356 @@ a { color: inherit; text-decoration: none; }
 }
 
 /* ---------- Reveal animations ---------- */
-[data-reveal] {
+[data-reveal] { opacity: 1; transform: none; }
+.js [data-reveal] {
   opacity: 0;
   transform: translateY(24px);
   transition: opacity .9s var(--ease-smooth), transform .9s var(--ease-smooth);
   transition-delay: var(--reveal-delay, 0ms);
 }
-[data-reveal].is-visible {
+.js [data-reveal].is-visible {
   opacity: 1;
   transform: translateY(0);
 }
 @media (prefers-reduced-motion: reduce) {
-  [data-reveal] { opacity: 1; transform: none; transition: none; }
+  .js [data-reveal] { opacity: 1 !important; transform: none !important; transition: none !important; }
+  .js .hero-title .ltr { translate: 0 !important; transition: none !important; }
+  .intro { display: none !important; }
   .float-glyph, .marquee-track, .cue-line::after, .pulse-dot, .nav-dot { animation: none !important; }
+}
+
+/* =============================================================
+   ELEVATION LAYER
+   Load choreography · interactive hero · case studies · craft
+   ============================================================= */
+
+/* ---------- Intro curtain ---------- */
+html:not(.js) .intro { display: none; }
+.intro {
+  position: fixed; inset: 0;
+  z-index: 1000;
+  background: var(--paper);
+  display: flex; align-items: center; justify-content: center;
+  animation: introLift .82s var(--ease-smooth) 1.0s forwards;
+}
+.intro.is-gone { display: none; }
+.intro-inner {
+  display: flex; flex-direction: column; align-items: center; gap: 16px;
+  animation: introInnerLift .82s var(--ease-smooth) 1.0s forwards;
+}
+.intro-cap {
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--ink-mute);
+  opacity: 0; animation: introFade .6s var(--ease-smooth) .12s forwards;
+}
+.intro-mark {
+  font-family: var(--serif); font-size: clamp(28px, 4.6vw, 50px);
+  letter-spacing: -0.02em; color: var(--ink); line-height: 1;
+  opacity: 0; animation: introFade .7s var(--ease-smooth) .26s forwards;
+}
+.intro-mark em { font-style: italic; color: var(--accent); }
+.intro-rule {
+  display: block; height: 1px; width: 0;
+  background: var(--ink); opacity: 0.5;
+  animation: introRule .7s var(--ease-smooth) .46s forwards;
+}
+@keyframes introFade { to { opacity: 1; } }
+@keyframes introRule { to { width: clamp(170px, 22vw, 300px); opacity: 0.5; } }
+@keyframes introInnerLift { to { transform: translateY(-40px); opacity: 0; } }
+@keyframes introLift { to { transform: translateY(-101%); } }
+
+/* ---------- Scroll progress ---------- */
+html:not(.js) .scroll-progress { display: none; }
+.scroll-progress {
+  position: fixed; top: 0; left: 0; right: 0;
+  height: 2px; z-index: 60;
+  background: linear-gradient(90deg, var(--accent), var(--accent-soft));
+  transform: scaleX(0); transform-origin: 0 50%;
+  will-change: transform;
+}
+
+/* ---------- Live clock ---------- */
+[data-clock] { font-variant-numeric: tabular-nums; }
+
+/* ---------- Nav scroll-spy ---------- */
+.site-nav a.is-current { color: var(--ink); }
+.site-nav a.is-current::after { right: 0; }
+.nav-contact.is-current { background: var(--ink); color: var(--paper) !important; }
+.nav-contact.is-current .nav-dot { background: var(--paper); }
+
+/* ---------- Focus craft ---------- */
+:focus { outline: none; }
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+.case-link:focus-visible { outline-offset: 5px; }
+.cs-panel :focus-visible { outline-offset: 2px; }
+
+/* ---------- Ledger count craft ---------- */
+.ledger-no { font-variant-numeric: tabular-nums; }
+
+/* ---------- Scroll-driven in-card parallax ---------- */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .js .case-half .case-shot,
+    .js .case-third .case-shot {
+      animation: shotParallax linear both;
+      animation-timeline: view();
+      animation-range: cover 0% cover 100%;
+    }
+    @keyframes shotParallax {
+      from { translate: 0 6.5%; }
+      to   { translate: 0 -6.5%; }
+    }
+  }
+}
+
+/* ---------- Case study overlay ---------- */
+.case-study {
+  position: fixed; inset: 0; z-index: 900;
+  visibility: hidden;
+  pointer-events: none;
+}
+.case-study.is-open { visibility: visible; pointer-events: auto; }
+
+.cs-backdrop {
+  position: absolute; inset: 0;
+  background: rgba(20, 14, 8, 0.46);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  opacity: 0;
+  transition: opacity .55s var(--ease-smooth);
+  cursor: pointer;
+}
+.case-study.is-open .cs-backdrop { opacity: 1; }
+
+.cs-panel {
+  position: absolute;
+  left: 50%; bottom: 0;
+  width: min(980px, 100%);
+  height: min(93vh, 1160px);
+  transform: translate(-50%, 100%);
+  background: var(--paper);
+  border-radius: 26px 26px 0 0;
+  box-shadow: 0 -50px 130px -30px rgba(20, 14, 8, 0.55);
+  transition: transform .64s var(--ease-smooth);
+  overflow: hidden;
+  display: flex; flex-direction: column;
+  will-change: transform;
+}
+.case-study.is-open .cs-panel { transform: translate(-50%, 0); }
+@media (prefers-reduced-motion: reduce) {
+  .cs-panel, .cs-backdrop { transition: none; }
+}
+
+.cs-close {
+  position: absolute; top: 16px; right: 16px; z-index: 4;
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(244, 239, 230, 0.86);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--paper-edge);
+  border-radius: 100px;
+  padding: 9px 15px 9px 12px;
+  font-family: var(--mono); font-size: 11px; text-transform: uppercase;
+  letter-spacing: 0.1em; color: var(--ink-mid);
+  cursor: pointer;
+  transition: background .25s, color .25s, border-color .25s, transform .25s var(--ease-smooth);
+}
+.cs-close:hover {
+  background: var(--ink); color: var(--paper); border-color: var(--ink);
+  transform: scale(1.04);
+}
+.cs-close-x { width: 11px; height: 11px; position: relative; flex: none; }
+.cs-close-x::before, .cs-close-x::after {
+  content: ''; position: absolute; left: 50%; top: 50%;
+  width: 12px; height: 1.5px; background: currentColor;
+}
+.cs-close-x::before { transform: translate(-50%, -50%) rotate(45deg); }
+.cs-close-x::after  { transform: translate(-50%, -50%) rotate(-45deg); }
+
+.cs-scroll {
+  overflow-y: auto; overflow-x: hidden;
+  height: 100%;
+  scrollbar-width: thin;
+  scrollbar-color: var(--paper-edge) transparent;
+}
+.cs-scroll::-webkit-scrollbar { width: 8px; }
+.cs-scroll::-webkit-scrollbar-thumb { background: var(--paper-edge); border-radius: 8px; }
+
+/* Case study content */
+.cs-content { display: block; }
+
+.cs-hero {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+  background: var(--paper-soft);
+}
+.cs-hero .cs-shot {
+  width: auto; height: auto;
+  max-width: 44%; max-height: 86%;
+  object-fit: contain;
+  filter: drop-shadow(0 34px 50px rgba(20, 14, 8, 0.4));
+}
+.cs-hero .cs-icon {
+  position: absolute; top: clamp(20px, 3vw, 36px); left: clamp(20px, 3vw, 36px);
+  width: clamp(54px, 6vw, 78px); height: clamp(54px, 6vw, 78px);
+  border-radius: 22%;
+  box-shadow: 0 16px 34px rgba(20, 14, 8, 0.32);
+}
+
+.cs-head {
+  padding: clamp(28px, 4vw, 52px) clamp(28px, 5vw, 72px) 0;
+}
+.cs-head-meta {
+  display: flex; align-items: center; gap: 14px;
+  font-family: var(--mono); font-size: 11px;
+  text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--ink-mute);
+  margin-bottom: 14px;
+}
+.cs-head-meta .cs-no { color: var(--ink-light); }
+.cs-head-meta .cs-no::after { content: ''; display: inline-block; width: 18px; height: 1px; background: var(--ink-light); margin-left: 14px; vertical-align: middle; }
+.cs-title {
+  font-family: var(--serif); font-weight: 400;
+  font-size: clamp(44px, 6.5vw, 88px);
+  line-height: 0.98; letter-spacing: -0.03em;
+  margin: 0 0 14px;
+  font-variation-settings: 'opsz' 144, 'SOFT' 40;
+}
+.cs-tag {
+  font-family: var(--serif); font-style: italic;
+  font-size: clamp(18px, 1.9vw, 26px);
+  color: var(--accent);
+  margin: 0;
+  font-variation-settings: 'opsz' 144, 'SOFT' 100;
+}
+
+.cs-body {
+  padding: clamp(28px, 4vw, 52px) clamp(28px, 5vw, 72px) 0;
+  max-width: 760px;
+}
+.cs-block {
+  padding: clamp(24px, 3vw, 36px) 0;
+  border-top: 1px solid var(--paper-edge);
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  gap: clamp(16px, 3vw, 40px);
+}
+.cs-block:first-child { border-top: none; padding-top: clamp(8px, 2vw, 20px); }
+.cs-block-label {
+  font-family: var(--mono); font-size: 10px;
+  text-transform: uppercase; letter-spacing: 0.12em;
+  color: var(--ink-light);
+  padding-top: 6px;
+}
+.cs-prose {
+  font-family: var(--serif);
+  font-size: clamp(16px, 1.4vw, 20px);
+  line-height: 1.6; color: var(--ink-mid);
+  margin: 0;
+}
+.cs-prose strong { color: var(--ink); font-weight: 500; }
+.cs-outcome {
+  font-style: italic; color: var(--ink);
+  font-variation-settings: 'opsz' 144, 'SOFT' 80;
+}
+.cs-decisions {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; gap: clamp(20px, 2.6vw, 30px);
+}
+.cs-decisions li {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 16px;
+}
+.cs-decisions li::before {
+  content: counter(cs-dec, decimal-leading-zero);
+  counter-increment: cs-dec;
+  font-family: var(--mono); font-size: 11px;
+  color: var(--accent);
+  padding-top: 7px;
+}
+.cs-decisions { counter-reset: cs-dec; }
+.cs-decisions h4 {
+  font-family: var(--serif); font-weight: 400;
+  font-size: clamp(18px, 1.7vw, 23px);
+  line-height: 1.25; letter-spacing: -0.01em;
+  margin: 0 0 6px; color: var(--ink);
+  font-variation-settings: 'opsz' 144, 'SOFT' 60;
+}
+.cs-decisions p {
+  font-family: var(--serif);
+  font-size: clamp(15px, 1.15vw, 17px);
+  line-height: 1.55; color: var(--ink-mid);
+  margin: 0;
+}
+
+.cs-foot {
+  padding: clamp(28px, 4vw, 48px) clamp(28px, 5vw, 72px) clamp(40px, 6vw, 72px);
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 20px; flex-wrap: wrap;
+}
+.cs-visit {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--ink); color: var(--paper);
+  font-family: var(--mono); font-size: 12px;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  padding: 15px 24px; border-radius: 100px;
+  transition: background .3s, transform .3s var(--ease-smooth), gap .3s var(--ease-smooth);
+}
+.cs-visit span { transition: transform .3s var(--ease-smooth); }
+.cs-visit:hover { background: var(--accent); gap: 14px; }
+.cs-visit:hover span { transform: translate(3px, -3px); }
+.cs-foot-meta {
+  font-family: var(--mono); font-size: 11px;
+  text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--ink-mute);
+}
+
+/* Case study content entrance stagger */
+.cs-head, .cs-body .cs-block, .cs-foot {
+  opacity: 1; transform: none;
+}
+.js .cs-head, .js .cs-body .cs-block, .js .cs-foot {
+  opacity: 0; transform: translateY(22px);
+}
+.js .case-study.is-open .cs-head,
+.js .case-study.is-open .cs-body .cs-block,
+.js .case-study.is-open .cs-foot {
+  opacity: 1; transform: none;
+  transition: opacity .6s var(--ease-smooth), transform .6s var(--ease-smooth);
+}
+.js .case-study.is-open .cs-head            { transition-delay: .16s; }
+.js .case-study.is-open .cs-body .cs-block:nth-child(1) { transition-delay: .22s; }
+.js .case-study.is-open .cs-body .cs-block:nth-child(2) { transition-delay: .28s; }
+.js .case-study.is-open .cs-body .cs-block:nth-child(3) { transition-delay: .34s; }
+.js .case-study.is-open .cs-body .cs-block:nth-child(4) { transition-delay: .40s; }
+.js .case-study.is-open .cs-foot            { transition-delay: .46s; }
+@media (prefers-reduced-motion: reduce) {
+  .js .cs-head, .js .cs-body .cs-block, .js .cs-foot {
+    opacity: 1 !important; transform: none !important; transition: none !important;
+  }
+}
+
+/* Lock scroll behind overlay */
+html.cs-open, html.cs-open body { overflow: hidden; }
+
+@media (max-width: 720px) {
+  .cs-panel { height: 94vh; border-radius: 20px 20px 0 0; }
+  .cs-block { grid-template-columns: 1fr; gap: 8px; }
+  .cs-block-label { padding-top: 0; }
+  .cs-hero { aspect-ratio: 4 / 3; }
+  .cs-foot { flex-direction: column; align-items: flex-start; }
 }
 
 /* ---------- Print niceties ---------- */
 @media print {
-  .cursor, .grain, .site-header, .scroll-cue, .marquee { display: none !important; }
+  .cursor, .grain, .site-header, .scroll-cue, .marquee,
+  .intro, .scroll-progress, .case-study { display: none !important; }
   body { color: #000; background: #fff; }
 }
