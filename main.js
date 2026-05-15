@@ -160,22 +160,20 @@
   }
 
   /* ============================================================
-     6 · FLOATING GLYPH PARALLAX
+     6 · THEME TOGGLE — light / dark, View-Transitioned
      ============================================================ */
-  const glyphs = document.querySelectorAll('.float-glyph');
-  let mxN = 0, myN = 0;            // normalised mouse, shared
-  if (glyphs.length && !isCoarse && !reduced) {
-    let tx = 0, ty = 0;
-    const tick = () => {
-      tx += (mxN - tx) * 0.06;
-      ty += (myN - ty) * 0.06;
-      glyphs.forEach((g) => {
-        const d = parseFloat(g.dataset.depth || 0.05);
-        g.style.transform = `translate3d(${tx * d * 60}px, ${ty * d * 60}px, 0)`;
-      });
-      raf(tick);
-    };
-    raf(tick);
+  const themeToggle = document.querySelector('[data-theme-toggle]');
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      const next = doc.dataset.theme === 'dark' ? 'light' : 'dark';
+      const apply = () => { doc.dataset.theme = next; };
+      if (document.startViewTransition && !reduced) {
+        document.startViewTransition(apply);
+      } else {
+        apply();
+      }
+      try { localStorage.setItem('theme', next); } catch (e) {}
+    });
   }
 
   /* ============================================================
@@ -193,8 +191,6 @@
 
     window.addEventListener('mousemove', (e) => {
       cursorPos.x = e.clientX; cursorPos.y = e.clientY;
-      mxN = (e.clientX / innerWidth  - 0.5) * 2;
-      myN = (e.clientY / innerHeight - 0.5) * 2;
     }, { passive: true });
 
     document.addEventListener('mousedown', () => cursor && cursor.classList.add('is-down'));
@@ -449,123 +445,6 @@
     }
   };
 
-  /* Reverse-engineered low-fi wireframes — the structural bones of each
-     real, shipped app. Coded, not images. */
-  const tile  = '<div class="wf-tile"><div class="wf-dot"></div><div class="wf-line w-80"></div></div>';
-  const box1  = '<div class="wf-box" style="aspect-ratio:1"></div>';
-  const STRUCTURE = {
-    utilify: {
-      wireframe: `<div class="wireframe">
-        <div class="wf-status"><span></span><span></span></div>
-        <div class="wf-row"><div class="wf-line title w-40"></div><div class="wf-fill"></div><div class="wf-circle" style="width:20px;height:20px"></div></div>
-        <div class="wf-pill w-full" style="height:30px"></div>
-        <div class="wf-grid" style="grid-template-columns:repeat(3,1fr)">${tile.repeat(9)}</div>
-        <div class="wf-fill"></div>
-        <div class="wf-row wf-center" style="gap:20px;padding-top:4px"><div class="wf-circle" style="width:22px;height:22px"></div><div class="wf-circle" style="width:22px;height:22px"></div><div class="wf-circle" style="width:22px;height:22px"></div></div>
-      </div>`,
-      note: 'The entire app is one screen. Every tool sits a single tap from the grid — no folders, no nesting — so the structure you see is the structure, and there is nowhere to get lost.'
-    },
-    canwasa: {
-      wireframe: `<div class="wireframe">
-        <div class="wf-status"><span></span><span></span></div>
-        <div class="wf-row"><div class="wf-line w-30"></div><div class="wf-fill"></div><div class="wf-circle" style="width:18px;height:18px"></div></div>
-        <div class="wf-box fill wf-fill" style="margin:2px 0"></div>
-        <div class="wf-row wf-center" style="gap:14px;padding:6px 0"><div class="wf-circle" style="width:26px;height:26px"></div><div class="wf-pill" style="width:88px;height:34px"></div><div class="wf-circle" style="width:26px;height:26px"></div></div>
-      </div>`,
-      note: 'One decision shaped the whole layout: the canvas takes the screen, and every control collapses to a single row at the foot — present when you reach for it, invisible when you don’t.'
-    },
-    nightbloom: {
-      wireframe: `<div class="wireframe is-dark">
-        <div class="wf-status"><span></span><span></span></div>
-        <div class="wf-line title w-50"></div>
-        <div class="wf-box fill" style="height:108px"></div>
-        <div class="wf-stack">
-          ${'<div class="wf-row"><div class="wf-circle" style="width:30px;height:30px"></div><div class="wf-stack wf-fill"><div class="wf-line w-60"></div><div class="wf-line w-30"></div></div></div>'.repeat(3)}
-        </div>
-        <div class="wf-fill"></div>
-        <div class="wf-line w-full" style="height:4px"></div>
-        <div class="wf-row wf-center" style="gap:16px;padding-top:4px"><div class="wf-circle" style="width:22px;height:22px"></div><div class="wf-circle fill" style="width:40px;height:40px"></div><div class="wf-circle" style="width:22px;height:22px"></div></div>
-      </div>`,
-      note: 'The wireframe is dark because the decision is dark. This screen was structured for a hand in a black room — large targets, a fixed player at the foot, nothing that needs aim.'
-    },
-    palettely: {
-      wireframe: `<div class="wireframe">
-        <div class="wf-status"><span></span><span></span></div>
-        <div class="wf-row"><div class="wf-line title w-40"></div><div class="wf-fill"></div><div class="wf-circle" style="width:18px;height:18px"></div></div>
-        <div class="wf-box fill" style="height:118px"></div>
-        <div class="wf-row" style="gap:5px">${'<div class="wf-box fill wf-fill" style="height:26px"></div>'.repeat(5)}</div>
-        <div class="wf-line w-30" style="margin-top:2px"></div>
-        <div class="wf-grid wf-fill" style="grid-template-columns:repeat(3,1fr)">${box1.repeat(6)}</div>
-      </div>`,
-      note: 'The flow reads top to bottom exactly as the task does — the photo, the palette it yields, the moodboard it feeds. The structure is the verb list.'
-    },
-    paperlens: {
-      wireframe: `<div class="wireframe">
-        <div class="wf-status"><span></span><span></span></div>
-        <div class="wf-box fill wf-fill" style="display:flex;align-items:center;justify-content:center">
-          <div class="wf-box" style="width:62%;height:62%;border-style:dashed"></div>
-        </div>
-        <div class="wf-row wf-center" style="padding:8px 0"><div class="wf-circle fill" style="width:48px;height:48px"></div></div>
-        <div class="wf-row" style="gap:6px">${'<div class="wf-box fill wf-fill" style="height:34px"></div>'.repeat(3)}</div>
-      </div>`,
-      note: 'The camera is the screen. Capture is the one large target. Everything else — the documents you’ve already made — waits quietly at the bottom edge.'
-    },
-    astroorbit: {
-      wireframe: `<div class="wireframe">
-        <div class="wf-status"><span></span><span></span></div>
-        <div class="wf-row"><div class="wf-line w-30"></div><div class="wf-fill"></div><div class="wf-circle" style="width:18px;height:18px"></div></div>
-        <div class="wf-box fill wf-fill" style="display:flex;align-items:center;justify-content:center">
-          <div class="wf-circle" style="width:72%;aspect-ratio:1;display:flex;align-items:center;justify-content:center"><div class="wf-circle fill" style="width:20%;aspect-ratio:1"></div></div>
-        </div>
-        <div class="wf-row wf-center" style="padding-top:6px"><div class="wf-pill" style="width:78px;height:24px"></div></div>
-      </div>`,
-      note: 'A game wireframe is mostly negative space. The job here was protecting the play field — the HUD shrinks to two corners so nothing competes with the thing you’re actually watching.'
-    },
-    mergerise: {
-      wireframe: `<div class="wireframe">
-        <div class="wf-status"><span></span><span></span></div>
-        <div class="wf-row" style="gap:8px"><div class="wf-box fill wf-fill" style="height:34px"></div><div class="wf-box fill wf-fill" style="height:34px"></div></div>
-        <div class="wf-grid" style="grid-template-columns:repeat(4,1fr)">${box1.repeat(16)}</div>
-        <div class="wf-fill"></div>
-        <div class="wf-box fill" style="height:30px"></div>
-      </div>`,
-      note: 'Two layers, cleanly separated: the 2048 grid is the structure’s centre and stays sacred; the civilisation lives in a strip above and below it, never crowding the board.'
-    },
-    fuzzypop: {
-      wireframe: `<div class="wireframe">
-        <div class="wf-status"><span></span></div>
-        <div class="wf-row"><div class="wf-fill"></div><div class="wf-circle" style="width:28px;height:28px"></div></div>
-        <div class="wf-box fill wf-fill" style="display:flex;flex-wrap:wrap;gap:12px;align-content:center;justify-content:center;padding:16px">
-          ${'<div class="wf-circle fill" style="width:32px;height:32px"></div>'.repeat(6)}
-        </div>
-      </div>`,
-      note: 'The wireframe is almost empty — and that is the design. One score, one corner, and a play field with nothing a small child could tap by mistake.'
-    },
-    tzc: {
-      wireframe: `<div class="wireframe">
-        <div class="wf-status"><span></span><span></span></div>
-        <div class="wf-row"><div class="wf-line title w-50"></div><div class="wf-fill"></div><div class="wf-circle" style="width:20px;height:20px"></div></div>
-        <div class="wf-stack">
-          ${'<div class="wf-row"><div class="wf-circle fill" style="width:26px;height:26px"></div><div class="wf-stack wf-fill"><div class="wf-line w-50"></div><div class="wf-line w-30"></div></div><div class="wf-line w-20"></div></div>'.repeat(4)}
-        </div>
-        <div class="wf-fill"></div>
-        <div class="wf-box" style="height:38px;display:flex;align-items:center;padding:0 6px"><div class="wf-box fill" style="height:22px;width:34%;margin-left:32%"></div></div>
-        <div class="wf-row wf-center" style="padding-top:4px"><div class="wf-pill fill" style="width:124px;height:30px"></div></div>
-      </div>`,
-      note: 'People stack at the top, the overlap band sits below them, and the answer — the best time — is the last thing on the screen. The layout is the sentence: who, when, go.'
-    },
-    qito: {
-      wireframe: `<div class="wireframe">
-        <div class="wf-status"><span></span><span></span></div>
-        <div class="wf-box fill wf-fill" style="display:flex;align-items:center;justify-content:center">
-          <div class="wf-box" style="width:56%;aspect-ratio:1;border-style:dashed"></div>
-        </div>
-        <div class="wf-row wf-center" style="padding-top:8px"><div class="wf-pill" style="width:108px;height:28px"></div></div>
-      </div>`,
-      note: 'One screen, one frame, one job. The viewport fills everything, the scan target is dead centre, and the result is the only thing that ever appears on top.'
-    }
-  };
-
   const overlay  = document.getElementById('caseStudy');
   const csScroll = overlay ? overlay.querySelector('.cs-scroll') : null;
   const csClose  = overlay ? overlay.querySelector('.cs-close') : null;
@@ -576,11 +455,10 @@
     return String(s).replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
   }
 
-  function buildCase(p, key) {
+  function buildCase(p) {
     const decisions = p.decisions.map((d) =>
       `<li><div><h4>${esc(d.h)}</h4><p>${esc(d.p)}</p></div></li>`
     ).join('');
-    const struct = STRUCTURE[key] || { wireframe: '', note: '' };
     return `
       <article class="cs-content" data-app="${esc(p.title)}">
         <header class="cs-head">
@@ -592,20 +470,9 @@
           <h2 class="cs-title" id="csTitle">${esc(p.title)}</h2>
           <p class="cs-tag">${esc(p.tag)}</p>
         </header>
-        <section class="cs-structure">
-          <span class="cs-block-label">Structure → Surface</span>
-          <div class="cs-diptych" style="background:${p.tint}">
-            <figure class="cs-dip">
-              <div class="cs-dip-frame">${struct.wireframe}</div>
-              <figcaption><b>Low-fidelity</b> · the bones</figcaption>
-            </figure>
-            <figure class="cs-dip">
-              <div class="cs-dip-frame"><img class="cs-shot" src="${p.shot}" alt="${esc(p.title)} — shipped screen" /></div>
-              <figcaption><b>Shipped</b> · the surface</figcaption>
-            </figure>
-          </div>
-          <p class="cs-prose cs-struct-note">${esc(struct.note)}</p>
-        </section>
+        <div class="cs-hero" style="background:${p.tint}">
+          <img class="cs-shot" src="${p.shot}" alt="${esc(p.title)} — shipped screen" />
+        </div>
         <div class="cs-body">
           <section class="cs-block">
             <span class="cs-block-label">The brief</span>
@@ -636,13 +503,15 @@
     if (!p || !overlay) return;
     clearTimeout(closeTimer);
     lastTrigger = trigger || null;
-    csScroll.innerHTML = buildCase(p, key);
+    csScroll.innerHTML = buildCase(p);
     csScroll.scrollTop = 0;
     overlay.setAttribute('aria-hidden', 'false');
     doc.classList.add('cs-open');
     if (window.__bindCursorHovers) window.__bindCursorHovers(overlay);
-    raf(() => raf(() => overlay.classList.add('is-open')));
-    setTimeout(() => { csClose && csClose.focus(); }, 60);
+    const showOpen = () => overlay.classList.add('is-open');
+    raf(() => raf(showOpen));
+    setTimeout(showOpen, 40);   // fallback for backgrounded tabs / paused rAF
+    setTimeout(() => { csClose && csClose.focus(); }, 80);
   }
 
   function closeCase() {
@@ -715,5 +584,170 @@
         }
       }
     });
+  }
+
+  /* ============================================================
+     10 · HERO CONSTELLATION — the ten apps, as physical particles
+     ============================================================ */
+  const heroCanvas = document.querySelector('.hero-canvas');
+  if (heroCanvas && !isCoarse && !reduced) {
+    const ctx = heroCanvas.getContext('2d');
+    const DPR = Math.min(window.devicePixelRatio || 1, 2);
+
+    const ICONS = [
+      { key: 'utilify',    src: 'assets/icons/utilify.png',         size: 86 },
+      { key: 'palettely',  src: 'assets/icons/palettely.png',       size: 68 },
+      { key: 'canwasa',    src: 'assets/icons/canwasa.png',         size: 62 },
+      { key: 'nightbloom', src: 'assets/icons/nightbloom.png',      size: 74 },
+      { key: 'paperlens',  src: 'assets/icons/paperlens.png',       size: 58 },
+      { key: 'astroorbit', src: 'assets/icons/astroorbit.png',      size: 70 },
+      { key: 'mergerise',  src: 'assets/icons/mergerise.png',       size: 60 },
+      { key: 'fuzzypop',   src: 'assets/icons/fuzzypop.png',        size: 54 },
+      { key: 'tzc',        src: 'assets/icons/timezoneconnect.png', size: 64 },
+      { key: 'qito',       src: 'assets/icons/qito.png',            size: 52 }
+    ];
+
+    const particles = ICONS.map((entry, i) => ({
+      key: entry.key,
+      img: Object.assign(new Image(), { src: entry.src }),
+      size: entry.size,
+      homeX: 0, homeY: 0,
+      x: 0, y: 0,
+      vx: 0, vy: 0,
+      angle: (Math.sin(i * 17.3)) * 0.18,
+      angVel: 0,
+      seed: i * 73.21
+    }));
+
+    let canvasW = 0, canvasH = 0, settled = false;
+
+    function layout() {
+      const r = heroCanvas.getBoundingClientRect();
+      canvasW = r.width; canvasH = r.height;
+      heroCanvas.width  = Math.round(canvasW * DPR);
+      heroCanvas.height = Math.round(canvasH * DPR);
+      ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+
+      // Distribute the icons in the right ~52% of the hero, biased away from the title text on the left
+      const cols = 5, rows = 2;
+      const xStart = canvasW * 0.50;
+      const xEnd   = canvasW * 0.96;
+      const yStart = canvasH * 0.18;
+      const yEnd   = canvasH * 0.88;
+      const cellW = (xEnd - xStart) / cols;
+      const cellH = (yEnd - yStart) / rows;
+
+      particles.forEach((p, i) => {
+        const c = i % cols;
+        const rr = Math.floor(i / cols);
+        const jx = Math.sin(p.seed) * cellW * 0.30;
+        const jy = Math.cos(p.seed * 1.7) * cellH * 0.22;
+        p.homeX = xStart + cellW * (c + 0.5) + jx;
+        p.homeY = yStart + cellH * (rr + 0.5) + jy;
+        if (!settled) { p.x = p.homeX + (Math.random() - 0.5) * 30; p.y = p.homeY + 30; }
+      });
+      settled = true;
+    }
+
+    let mouseX = -9999, mouseY = -9999;
+    function trackMouse(e) {
+      const r = heroCanvas.getBoundingClientRect();
+      mouseX = e.clientX - r.left;
+      mouseY = e.clientY - r.top;
+    }
+    window.addEventListener('mousemove', trackMouse, { passive: true });
+    window.addEventListener('mouseleave', () => { mouseX = -9999; mouseY = -9999; });
+
+    const REPEL_R = 160;
+    const SPRING  = 0.022;
+    const DAMP    = 0.91;
+
+    function step() {
+      ctx.clearRect(0, 0, canvasW, canvasH);
+      const t = performance.now() * 0.0006;
+      const cursorEl = document.querySelector('.cursor');
+      let anyHovered = false;
+
+      for (const p of particles) {
+        // spring toward home
+        p.vx += (p.homeX - p.x) * SPRING;
+        p.vy += (p.homeY - p.y) * SPRING;
+        // gentle ambient drift
+        p.vx += Math.sin(t + p.seed) * 0.035;
+        p.vy += Math.cos(t * 0.9 + p.seed) * 0.035;
+        // mouse interaction — repulsion outside the icon, pop+stop inside
+        const mdx = p.x - mouseX, mdy = p.y - mouseY;
+        const md = Math.hypot(mdx, mdy);
+        const hitR = p.size / 2 + 14;
+        if (md < hitR) {
+          // inside the icon: stop fleeing, pop slightly so you can land the click
+          p.scale = (p.scale || 1) + (1.14 - (p.scale || 1)) * 0.18;
+          p.angVel *= 0.85;
+          anyHovered = true;
+        } else {
+          p.scale = (p.scale || 1) + (1 - (p.scale || 1)) * 0.12;
+          if (md < REPEL_R && md > 0.01) {
+            const f = 1 - md / REPEL_R;
+            const force = f * 2.4;  // gentler, linear
+            p.vx += (mdx / md) * force;
+            p.vy += (mdy / md) * force;
+            p.angVel += f * 0.004;
+          }
+        }
+        // damp + integrate
+        p.vx *= DAMP; p.vy *= DAMP;
+        p.x  += p.vx; p.y  += p.vy;
+        // angular
+        p.angle  += p.angVel + p.vx * 0.003;
+        p.angVel *= 0.95;
+
+        if (!p.img.complete || !p.img.naturalWidth) continue;
+
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.angle);
+        ctx.shadowColor   = 'rgba(20, 14, 8, 0.32)';
+        ctx.shadowBlur    = 18;
+        ctx.shadowOffsetY = 12;
+        const s = p.size * (p.scale || 1);
+        ctx.drawImage(p.img, -s / 2, -s / 2, s, s);
+        ctx.restore();
+      }
+      // Hint the custom cursor when over an icon
+      if (cursorEl) cursorEl.classList.toggle('is-hover', anyHovered);
+      raf(step);
+    }
+
+    // Click → open the matching case study (generous hit radius)
+    heroCanvas.addEventListener('click', (e) => {
+      const r = heroCanvas.getBoundingClientRect();
+      const x = e.clientX - r.left;
+      const y = e.clientY - r.top;
+      let nearest = null, minD = Infinity;
+      for (const p of particles) {
+        const d = Math.hypot(p.x - x, p.y - y);
+        if (d < p.size / 2 + 18 && d < minD) { minD = d; nearest = p; }
+      }
+      if (nearest && typeof openCase === 'function') openCase(nearest.key, heroCanvas);
+    });
+
+    // Expose for verification in preview only — harmless tap-handle on window
+    window.__heroParticles = particles;
+
+    // Wait for the icons to load before starting
+    Promise.all(particles.map((p) => new Promise((res) => {
+      if (p.img.complete && p.img.naturalWidth) return res();
+      p.img.onload = res; p.img.onerror = res;
+    }))).then(() => {
+      layout();
+      raf(step);
+    });
+
+    let resizeQueued = false;
+    window.addEventListener('resize', () => {
+      if (resizeQueued) return;
+      resizeQueued = true;
+      raf(() => { layout(); resizeQueued = false; });
+    }, { passive: true });
   }
 })();

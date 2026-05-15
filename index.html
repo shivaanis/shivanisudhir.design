@@ -2,7 +2,16 @@
 <html lang="en" data-theme="light">
 <head>
   <meta charset="utf-8">
-  <script>document.documentElement.classList.add('js');</script>
+  <script>
+    document.documentElement.classList.add('js');
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (!t) t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        document.documentElement.dataset.theme = t;
+      } catch (e) {}
+    })();
+  </script>
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#F4EFE6">
   <title>Shivani Sudhir — UI/UX Designer</title>
@@ -56,6 +65,9 @@
       <a href="#craft" data-spy="craft">Craft</a>
       <a href="#approach" data-spy="approach">Approach</a>
       <a href="#about" data-spy="about">About</a>
+      <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle light or dark mode">
+        <span class="theme-icon" aria-hidden="true"></span>
+      </button>
       <a href="#contact" class="nav-contact" data-spy="contact">
         <span class="nav-dot" aria-hidden="true"></span>
         Available
@@ -65,13 +77,8 @@
 
   <!-- ───────────────────────────── HERO ───────────────────────────── -->
   <section class="hero" id="top">
-    <div class="hero-bg" aria-hidden="true">
-      <img class="float-glyph" data-depth="0.05" src="assets/icons/palettely.png" style="top:7%;right:18%;width:48px;" alt="">
-      <img class="float-glyph" data-depth="0.09" src="assets/icons/nightbloom.png" style="top:30%;right:5%;width:44px;" alt="">
-      <img class="float-glyph" data-depth="0.07" src="assets/icons/utilify.png" style="top:60%;right:6%;width:64px;" alt="">
-      <img class="float-glyph" data-depth="0.06" src="assets/icons/astroorbit.png" style="bottom:18%;right:22%;width:40px;" alt="">
-      <img class="float-glyph" data-depth="0.04" src="assets/icons/canwasa.png" style="top:46%;right:14%;width:36px;" alt="">
-    </div>
+    <!-- The constellation — ten real apps as physical particles -->
+    <canvas class="hero-canvas" aria-hidden="true"></canvas>
 
     <div class="hero-meta hero-meta-top">
       <span class="kicker">Portfolio · 2017 — 2026</span>
