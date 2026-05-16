@@ -292,15 +292,19 @@ a { color: inherit; text-decoration: none; }
   font-family: var(--serif);
   font-weight: 400;
   font-size: clamp(72px, 16.5vw, 260px);
-  line-height: 0.88;
+  /* Line-height generous enough to fully contain italic descenders/swashes */
+  line-height: 0.98;
   letter-spacing: -0.045em;
   color: var(--ink);
   font-variation-settings: 'opsz' 144, 'SOFT' 50;
   align-self: center;
+  overflow: visible;
 }
 .hero-title .line {
   display: block;
-  /* No overflow clipping — italic descenders/swashes render in full */
+  overflow: visible;
+  /* Explicit breathing room: italic descenders and Fraunces swashes sit safely inside */
+  padding-block: 0.06em 0.20em;
 }
 .hero-title .line:last-child {
   padding-left: clamp(40px, 8vw, 120px);
