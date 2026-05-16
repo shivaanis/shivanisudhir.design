@@ -358,7 +358,6 @@ a { color: inherit; text-decoration: none; }
   will-change: transform;
 }
 .marquee-track:hover { animation-play-state: paused; }
-.marquee-track.is-driven { animation: none; }
 .marquee-track > span:not(.diamond) {
   font-family: var(--serif);
   font-weight: 400;
