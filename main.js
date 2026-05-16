@@ -219,13 +219,47 @@
   }
 
   /* ============================================================
-     8 · MARQUEE — clone if short
+     8 · MARQUEE — scroll-velocity-driven
+        Continuous baseline drift; scrolling speeds it up; mouse pauses it.
      ============================================================ */
   const marquee = document.querySelector('.marquee-track');
   if (marquee) {
-    raf(() => {
-      if (marquee.scrollWidth < innerWidth * 2) marquee.innerHTML += marquee.innerHTML;
-    });
+    const initMarquee = () => {
+      if (marquee.dataset.driven) return;
+      while (marquee.scrollWidth < innerWidth * 2.4) marquee.innerHTML += marquee.innerHTML;
+      if (reduced) return;
+      marquee.dataset.driven = '1';
+      marquee.classList.add('is-driven');
+
+      const BASE = 0.45;           // px/frame baseline drift
+      let pos = 0;
+      let burst = 0;               // velocity boost from scroll, decays
+      let lastY = window.scrollY || window.pageYOffset;
+      let hover = false;
+      let halfW = marquee.scrollWidth / 2;
+
+      window.addEventListener('scroll', () => {
+        const y = window.scrollY || window.pageYOffset;
+        burst += Math.min(Math.abs(y - lastY) * 0.35, 12); // clamp surges
+        lastY = y;
+      }, { passive: true });
+
+      marquee.addEventListener('mouseenter', () => { hover = true; });
+      marquee.addEventListener('mouseleave', () => { hover = false; });
+
+      window.addEventListener('resize', () => { halfW = marquee.scrollWidth / 2; });
+
+      const tick = () => {
+        const speed = hover ? 0 : (BASE + burst);
+        pos -= speed;
+        burst *= 0.90; // decay back to baseline
+        if (halfW > 0 && pos <= -halfW) pos += halfW;
+        marquee.style.transform = `translate3d(${pos}px, 0, 0)`;
+      };
+      setInterval(tick, 16);
+    };
+    raf(initMarquee);
+    setTimeout(initMarquee, 60);  // fallback if rAF is throttled
   }
 
   /* ============================================================

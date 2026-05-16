@@ -388,6 +388,7 @@ a { color: inherit; text-decoration: none; }
   will-change: transform;
 }
 .marquee-track:hover { animation-play-state: paused; }
+.marquee-track.is-driven { animation: none; }
 .marquee-track > span:not(.diamond) {
   font-family: var(--serif);
   font-weight: 400;
@@ -440,6 +441,59 @@ a { color: inherit; text-decoration: none; }
 @media (max-width: 760px) {
   .manifesto-grid { grid-template-columns: 1fr; }
   .manifesto .section-title { margin-bottom: 36px; }
+}
+
+/* ---------- Services / What I make ---------- */
+.services {
+  padding: clamp(70px, 10vh, 120px) var(--rail);
+  position: relative; z-index: 1;
+  border-top: 1px solid var(--paper-edge);
+}
+.services-head { max-width: 60ch; margin-bottom: clamp(40px, 5vh, 64px); }
+.services-head .section-lede { margin-left: 0; }
+.services-list {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; gap: 0;
+}
+.service {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  gap: clamp(18px, 3vw, 40px);
+  padding: clamp(22px, 3vw, 32px) 0;
+  border-top: 1px solid var(--paper-edge);
+  align-items: baseline;
+}
+.service:last-child { border-bottom: 1px solid var(--paper-edge); }
+.service-no {
+  font-family: var(--serif); font-style: italic;
+  font-size: clamp(14px, 1.1vw, 17px);
+  letter-spacing: 0.02em;
+  color: var(--accent);
+  font-variation-settings: 'opsz' 144, 'SOFT' 100;
+}
+.service-text {
+  display: grid;
+  grid-template-columns: minmax(220px, 1fr) 2fr;
+  gap: clamp(18px, 4vw, 64px);
+  align-items: baseline;
+}
+.service h3 {
+  font-family: var(--serif); font-weight: 400;
+  font-size: clamp(24px, 2.4vw, 36px);
+  line-height: 1.05; letter-spacing: -0.02em;
+  margin: 0; color: var(--ink);
+  font-variation-settings: 'opsz' 144, 'SOFT' 50;
+}
+.service p {
+  font-family: var(--serif);
+  font-size: clamp(15px, 1.15vw, 17px);
+  line-height: 1.55;
+  color: var(--ink-mid);
+  margin: 0; max-width: 50ch;
+}
+@media (max-width: 760px) {
+  .service { grid-template-columns: auto 1fr; gap: 14px; }
+  .service-text { grid-template-columns: 1fr; gap: 6px; }
 }
 
 /* ---------- Selected Work — editorial index ---------- */
