@@ -327,40 +327,9 @@ a { color: inherit; text-decoration: none; }
   50%      { box-shadow: 0 0 0 7px rgba(46, 170, 99, 0); }
 }
 
-.scroll-cue {
-  position: absolute;
-  right: var(--rail);
-  bottom: clamp(28px, 5vh, 56px);
-  display: inline-flex; align-items: center; gap: 14px;
-  font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--ink-mute);
-}
-.cue-line {
-  display: inline-block;
-  width: 48px; height: 1px;
-  background: var(--ink-mid);
-  position: relative; overflow: hidden;
-}
-.cue-line::after {
-  content: '';
-  position: absolute; inset: 0;
-  background: var(--accent);
-  transform: translateX(-100%);
-  animation: cue 2.4s var(--ease-smooth) infinite;
-}
-@keyframes cue {
-  0%   { transform: translateX(-100%); }
-  60%  { transform: translateX(0); }
-  100% { transform: translateX(100%); }
-}
-
 @media (max-width: 760px) {
   .hero { padding: 110px 24px 48px; }
   .hero-meta-bottom { grid-template-columns: repeat(2, 1fr); gap: 20px 16px; padding-top: 20px; }
-  .scroll-cue { position: static; margin-top: 8px; }
   .hero-title .line:last-child { padding-left: 28px; }
 
   /* Tighten nav: keep mark + contact pill only */
@@ -508,7 +477,25 @@ a { color: inherit; text-decoration: none; }
   list-style: none; margin: 0; padding: 0;
   border-top: 1px solid var(--paper-edge);
 }
-.work-row { border-bottom: 1px solid var(--paper-edge); }
+.work-row {
+  border-bottom: 1px solid var(--paper-edge);
+  position: relative;
+}
+/* Brand-colour vertical bar draws in on hover */
+.work-row::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, var(--ca, var(--accent)), var(--cb, var(--accent)));
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform .6s var(--ease-smooth);
+  pointer-events: none;
+  z-index: 2;
+}
+.work-row:hover::before,
+.work-row:focus-within::before { transform: scaleY(1); }
 .work-link {
   position: relative;
   display: grid;
@@ -527,7 +514,7 @@ a { color: inherit; text-decoration: none; }
   transition: opacity .55s var(--ease-smooth);
 }
 .work-row:hover .work-link::before,
-.work-link:focus-visible::before { opacity: 0.13; }
+.work-link:focus-visible::before { opacity: 0.20; }
 /* brand-gradient underline draws across on hover */
 .work-link::after {
   content: '';
@@ -581,23 +568,6 @@ a { color: inherit; text-decoration: none; }
 }
 .work-row:hover .row-go { transform: translateX(8px); color: var(--accent); }
 
-/* Floating screenshot preview (desktop) */
-.work-preview {
-  position: fixed; top: 0; left: 0; z-index: 45;
-  width: clamp(190px, 16vw, 240px);
-  aspect-ratio: 9 / 16;
-  pointer-events: none;
-  border-radius: 16px;
-  overflow: hidden;
-  opacity: 0; scale: 0.9;
-  transition: opacity .45s var(--ease-smooth), scale .45s var(--ease-smooth);
-  box-shadow: 0 40px 90px -26px rgba(20, 14, 8, 0.6);
-  will-change: transform;
-}
-.work-preview.is-on { opacity: 1; scale: 1; }
-.work-preview img { width: 100%; height: 100%; object-fit: cover; display: block; }
-@media (hover: none), (pointer: coarse) { .work-preview { display: none; } }
-@media (prefers-reduced-motion: reduce) { .work-preview { display: none; } }
 
 /* ---------- Craft — the system (cool-dark interlude, never brown) ---------- */
 .craft {
@@ -988,7 +958,7 @@ a { color: inherit; text-decoration: none; }
   .js [data-reveal] { opacity: 1 !important; transform: none !important; transition: none !important; }
   .js .hero-title .ltr { translate: 0 !important; transition: none !important; }
   .intro { display: none !important; }
-  .marquee-track, .cue-line::after, .pulse-dot, .nav-dot { animation: none !important; }
+  .marquee-track, .pulse-dot, .nav-dot { animation: none !important; }
 }
 
 /* =============================================================
@@ -1327,7 +1297,7 @@ html.cs-open, html.cs-open body { overflow: hidden; }
 
 /* ---------- Print niceties ---------- */
 @media print {
-  .site-header, .scroll-cue, .marquee,
+  .site-header, .marquee,
   .intro, .scroll-progress, .case-study { display: none !important; }
   body { color: #000; background: #fff; }
 }

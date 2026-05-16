@@ -515,36 +515,6 @@
     });
   });
 
-  /* ---- Floating screenshot preview (desktop) ---- */
-  const preview    = document.querySelector('.work-preview');
-  const previewImg = preview ? preview.querySelector('img') : null;
-  if (preview && previewImg && !isCoarse && !reduced) {
-    let px = innerWidth / 2, py = innerHeight / 2, tx = px, ty = py;
-    let activeKey = null;
-    document.querySelectorAll('.work-row').forEach((row) => {
-      const link = row.querySelector('[data-case]');
-      if (!link) return;
-      const key = link.dataset.case;
-      row.addEventListener('mouseenter', () => {
-        const p = PROJECTS[key];
-        if (!p) return;
-        if (activeKey !== key) { previewImg.src = p.shot; activeKey = key; }
-        preview.classList.add('is-on');
-      });
-      row.addEventListener('mouseleave', () => preview.classList.remove('is-on'));
-    });
-    document.addEventListener('mousemove', (e) => { px = e.clientX; py = e.clientY; }, { passive: true });
-    const followTick = () => {
-      tx += (px - tx) * 0.14;
-      ty += (py - ty) * 0.14;
-      const w = preview.offsetWidth || 220;
-      const side = px > innerWidth - w - 70 ? -(w + 30) : 30;
-      preview.style.transform = `translate(${tx + side}px, ${ty}px) translateY(-50%)`;
-      raf(followTick);
-    };
-    raf(followTick);
-  }
-
   if (overlay) {
     overlay.querySelectorAll('[data-cs-close]').forEach((el) => {
       el.addEventListener('click', closeCase);
