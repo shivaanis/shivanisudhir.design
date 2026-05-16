@@ -263,7 +263,16 @@ a { color: inherit; text-decoration: none; }
   transform: translateY(-4px) scale(1.06);
   box-shadow: 0 24px 36px -10px rgba(20, 14, 8, 0.40);
 }
-@media (max-width: 880px) { .hero-grid { display: none; } }
+@media (max-width: 880px) {
+  /* Below tablet: switch to a horizontal 5×2 strip at the foot of the hero */
+  .hero-grid {
+    position: static;
+    transform: none;
+    width: 100%;
+    grid-template-columns: repeat(5, 1fr);
+    gap: clamp(10px, 2vw, 14px);
+  }
+}
 
 .hero-meta {
   display: flex; align-items: center; gap: clamp(14px, 3vw, 40px);
