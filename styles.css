@@ -312,24 +312,23 @@ a { color: inherit; text-decoration: none; }
 .hero-title .line:last-child {
   padding-left: clamp(40px, 8vw, 120px);
 }
-.hero-title .word { display: inline-block; }
+.hero-title .word {
+  display: inline-block;
+  will-change: opacity, translate;
+}
 .hero-title .word.italic {
   font-style: italic;
   font-variation-settings: 'opsz' 144, 'SOFT' 100;
   color: var(--accent);
 }
-.hero-title .ltr {
-  display: inline-block;
-  will-change: transform, translate, opacity;
-}
-.js .hero-title .ltr {
-  translate: 0 40%;
+.js .hero-title .word {
+  translate: 0 30%;
   opacity: 0;
-  transition: translate .9s var(--ease-smooth),
-              opacity .9s var(--ease-smooth);
-  transition-delay: calc(var(--i, 0) * 26ms);
+  transition: translate .95s var(--ease-smooth),
+              opacity .95s var(--ease-smooth);
 }
-.hero-title.is-revealed .ltr {
+.js .hero-title .line:last-child .word { transition-delay: .12s; }
+.hero-title.is-revealed .word {
   translate: 0 0;
   opacity: 1;
 }

@@ -43,27 +43,12 @@
   }
 
   /* ============================================================
-     2 · SPLIT HERO TITLE INTO LETTERS
+     2 · HERO TITLE — rendered as plain text (no per-letter splits).
+        Keeps glyph rendering predictable on iOS Safari with variable
+        Fraunces; the reveal animates the .word blocks, not letters.
      ============================================================ */
-  const splitTitle = document.querySelector('[data-split]');
-  let letters = [];
-  if (splitTitle) {
-    let idx = 0;
-    splitTitle.querySelectorAll('.word').forEach((word) => {
-      const text = word.textContent;
-      const soft = word.dataset.soft || '50';
-      word.textContent = '';
-      [...text].forEach((ch) => {
-        const span = document.createElement('span');
-        span.className = 'ltr';
-        span.textContent = ch;
-        span.style.setProperty('--i', idx++);
-        span.dataset.soft = soft;
-        word.appendChild(span);
-      });
-    });
-    letters = [...splitTitle.querySelectorAll('.ltr')];
-  }
+  const letters = [];   // intentionally empty — kept so the magnetic
+                        // field block downstream simply does nothing
 
   /* ============================================================
      3 · SCROLL SYSTEMS — header state, progress, scroll-spy
