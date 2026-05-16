@@ -57,6 +57,24 @@
 
   <!-- ───────────────────────────── HERO ───────────────────────────── -->
   <section class="hero" id="top">
+    <!-- Caustic light — sunlight-through-water atmosphere -->
+    <svg class="caustic" aria-hidden="true" preserveAspectRatio="none" viewBox="0 0 100 100">
+      <filter id="caustic-noise">
+        <feTurbulence type="fractalNoise" baseFrequency="0.018 0.024" numOctaves="2" seed="3">
+          <animate attributeName="baseFrequency"
+                   values="0.018 0.024; 0.026 0.018; 0.018 0.024"
+                   dur="22s" repeatCount="indefinite"/>
+        </feTurbulence>
+        <feGaussianBlur stdDeviation="1.4" />
+        <feColorMatrix type="matrix"
+          values="0 0 0 0 0.95
+                  0 0 0 0 0.36
+                  0 0 0 0 0.23
+                  0 0 0 1.8 -0.8"/>
+      </filter>
+      <rect width="100" height="100" filter="url(#caustic-noise)"/>
+    </svg>
+
     <!-- The constellation — ten real apps as physical particles -->
     <canvas class="hero-canvas" aria-hidden="true"></canvas>
 

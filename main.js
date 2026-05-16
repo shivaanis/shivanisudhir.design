@@ -514,29 +514,33 @@
     const ctx = heroCanvas.getContext('2d');
     const DPR = Math.min(window.devicePixelRatio || 1, 2);
 
+    /* A deliberate 3 — 4 — 3 composition. Flagship (Utilify) is the
+       visual anchor at the middle-left, sized larger; supporting
+       icons fan out around it. Positions are hand-placed, not jittered. */
     const ICONS = [
-      { key: 'utilify',    src: 'assets/icons/utilify.png',         size: 86 },
-      { key: 'palettely',  src: 'assets/icons/palettely.png',       size: 68 },
-      { key: 'canwasa',    src: 'assets/icons/canwasa.png',         size: 62 },
-      { key: 'nightbloom', src: 'assets/icons/nightbloom.png',      size: 74 },
-      { key: 'paperlens',  src: 'assets/icons/paperlens.png',       size: 58 },
-      { key: 'astroorbit', src: 'assets/icons/astroorbit.png',      size: 70 },
-      { key: 'mergerise',  src: 'assets/icons/mergerise.png',       size: 60 },
-      { key: 'fuzzypop',   src: 'assets/icons/fuzzypop.png',        size: 54 },
-      { key: 'tzc',        src: 'assets/icons/timezoneconnect.png', size: 64 },
-      { key: 'qito',       src: 'assets/icons/qito.png',            size: 52 }
+      { key: 'utilify',    src: 'assets/icons/utilify.png',         size: 92, bx: 0.32, by: 0.52, rot: -2 },
+      { key: 'palettely',  src: 'assets/icons/palettely.png',       size: 64, bx: 0.14, by: 0.18, rot: -8 },
+      { key: 'paperlens',  src: 'assets/icons/paperlens.png',       size: 54, bx: 0.50, by: 0.14, rot:  2 },
+      { key: 'astroorbit', src: 'assets/icons/astroorbit.png',      size: 66, bx: 0.86, by: 0.20, rot:  9 },
+      { key: 'canwasa',    src: 'assets/icons/canwasa.png',         size: 58, bx: 0.04, by: 0.54, rot: -4 },
+      { key: 'nightbloom', src: 'assets/icons/nightbloom.png',      size: 66, bx: 0.62, by: 0.50, rot:  3 },
+      { key: 'qito',       src: 'assets/icons/qito.png',            size: 50, bx: 0.94, by: 0.54, rot:  6 },
+      { key: 'fuzzypop',   src: 'assets/icons/fuzzypop.png',        size: 56, bx: 0.16, by: 0.84, rot:  7 },
+      { key: 'mergerise',  src: 'assets/icons/mergerise.png',       size: 62, bx: 0.50, by: 0.86, rot: -3 },
+      { key: 'tzc',        src: 'assets/icons/timezoneconnect.png', size: 58, bx: 0.84, by: 0.84, rot: -8 }
     ];
 
-    const particles = ICONS.map((entry, i) => ({
+    const particles = ICONS.map((entry) => ({
       key: entry.key,
       img: Object.assign(new Image(), { src: entry.src }),
       size: entry.size,
+      bx: entry.bx, by: entry.by, baseRot: entry.rot * Math.PI / 180,
       homeX: 0, homeY: 0,
       x: 0, y: 0,
       vx: 0, vy: 0,
-      angle: (Math.sin(i * 17.3)) * 0.18,
+      angle: entry.rot * Math.PI / 180,
       angVel: 0,
-      seed: i * 73.21
+      seed: entry.bx * 73.21 + entry.by * 19.7
     }));
 
     let canvasW = 0, canvasH = 0, settled = false;
@@ -548,23 +552,18 @@
       heroCanvas.height = Math.round(canvasH * DPR);
       ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
 
-      // Distribute the icons in the right ~52% of the hero, biased away from the title text on the left
-      const cols = 5, rows = 2;
+      // Icons live in the right ~46% of the hero, away from the title text on the left
       const xStart = canvasW * 0.50;
       const xEnd   = canvasW * 0.96;
-      const yStart = canvasH * 0.18;
-      const yEnd   = canvasH * 0.88;
-      const cellW = (xEnd - xStart) / cols;
-      const cellH = (yEnd - yStart) / rows;
+      const bandW  = xEnd - xStart;
 
-      particles.forEach((p, i) => {
-        const c = i % cols;
-        const rr = Math.floor(i / cols);
-        const jx = Math.sin(p.seed) * cellW * 0.30;
-        const jy = Math.cos(p.seed * 1.7) * cellH * 0.22;
-        p.homeX = xStart + cellW * (c + 0.5) + jx;
-        p.homeY = yStart + cellH * (rr + 0.5) + jy;
-        if (!settled) { p.x = p.homeX + (Math.random() - 0.5) * 30; p.y = p.homeY + 30; }
+      particles.forEach((p) => {
+        p.homeX = xStart + p.bx * bandW;
+        p.homeY = p.by * canvasH;
+        if (!settled) {
+          p.x = p.homeX + (Math.random() - 0.5) * 30;
+          p.y = p.homeY + 30;
+        }
       });
       settled = true;
     }

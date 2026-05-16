@@ -213,7 +213,18 @@ a { color: inherit; text-decoration: none; }
   z-index: 1;
 }
 
-/* The constellation canvas — ten app icons as physical particles */
+/* Hero atmosphere: caustic light layer + constellation canvas */
+.caustic {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.20;
+  mix-blend-mode: multiply;
+  display: block;
+}
+@media (prefers-reduced-motion: reduce) { .caustic { display: none; } }
+
 .hero-canvas {
   position: absolute; inset: 0;
   width: 100%; height: 100%;
@@ -222,7 +233,7 @@ a { color: inherit; text-decoration: none; }
   display: block;
 }
 .hero { isolation: isolate; }
-.hero > :not(.hero-canvas) { position: relative; z-index: 1; }
+.hero > :not(.hero-canvas):not(.caustic) { position: relative; z-index: 1; }
 @media (hover: none), (pointer: coarse) { .hero-canvas { display: none; } }
 @media (prefers-reduced-motion: reduce) { .hero-canvas { display: none; } }
 
