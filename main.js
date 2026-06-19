@@ -449,6 +449,10 @@
         'assets/work/palettely/style.jpg',
         'assets/work/palettely/explore.jpg',
         'assets/work/palettely/match.jpg'
+      ],
+      outputs: [
+        'assets/work/palettely/output-wallpaper.jpg',
+        'assets/work/palettely/output-card.jpg'
       ]
     },
     paperlens: {
@@ -578,6 +582,14 @@
             </div>
           </section>` : '';
 
+    const outputsBlock = (p.outputs && p.outputs.length) ? `
+          <section class="cs-block">
+            <span class="cs-block-label">What it makes</span>
+            <div class="cs-outputs">
+              ${p.outputs.map((o, i) => `<figure class="cs-output"><img src="${o}" alt="${esc(p.title)} — output ${i + 1}" loading="lazy" /></figure>`).join('')}
+            </div>
+          </section>` : '';
+
     const heroBlock = (p.shots && p.shots.length)
       ? `<div class="cs-hero cs-gallery" style="background:${p.tint}">
           <div class="cs-gallery-track">
@@ -612,7 +624,7 @@
           <section class="cs-block">
             <span class="cs-block-label">Design decisions</span>
             <ol class="cs-decisions">${decisions}</ol>
-          </section>${paletteBlock}${typeBlock}
+          </section>${paletteBlock}${typeBlock}${outputsBlock}
           <section class="cs-block">
             <span class="cs-block-label">Outcome</span>
             <p class="cs-prose cs-outcome">${esc(p.outcome)}</p>

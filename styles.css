@@ -1298,6 +1298,18 @@ html:not(.js) .scroll-progress { display: none; }
   border-radius: clamp(15px, 1.9vw, 23px);
 }
 
+/* ---------- "What it makes" — output cards ---------- */
+.cs-outputs { display: flex; flex-wrap: wrap; gap: clamp(12px, 1.6vw, 18px); }
+.cs-output { flex: 1 1 0; min-width: 150px; max-width: 230px; margin: 0; }
+.cs-output img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  display: block;
+  border-radius: 14px;
+  box-shadow: 0 16px 30px -12px rgba(20, 14, 8, 0.32);
+}
+
 .cs-body {
   padding: clamp(28px, 4vw, 52px) clamp(28px, 5vw, 72px) 0;
   max-width: 760px;
@@ -1460,7 +1472,8 @@ html:not(.js) .scroll-progress { display: none; }
 .js .case-study.is-open .cs-body .cs-block:nth-child(5) { transition-delay: .50s; }
 .js .case-study.is-open .cs-body .cs-block:nth-child(6) { transition-delay: .56s; }
 .js .case-study.is-open .cs-body .cs-block:nth-child(7) { transition-delay: .62s; }
-.js .case-study.is-open .cs-foot            { transition-delay: .68s; }
+.js .case-study.is-open .cs-body .cs-block:nth-child(8) { transition-delay: .68s; }
+.js .case-study.is-open .cs-foot            { transition-delay: .74s; }
 @media (prefers-reduced-motion: reduce) {
   .js .cs-head, .js .cs-hero, .js .cs-body .cs-block, .js .cs-foot {
     opacity: 1 !important; transform: none !important; transition: none !important;
