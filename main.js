@@ -396,7 +396,13 @@
         { h: 'Build one language', p: 'Designed a single component kit so a converter and a password generator are cut from the same buttons, fields and spacing.' },
         { h: 'Adapt & ship', p: 'Drove the iOS and Android builds from one set of tokens, then tuned density against real one-handed use.' }
       ],
-      typeNote: 'Tabular numerals do the heavy lifting — SF Pro’s monospaced figures keep converters and counters from shifting as values change.'
+      typeNote: 'Tabular numerals do the heavy lifting — SF Pro’s monospaced figures keep converters and counters from shifting as values change.',
+      shots: [
+        'assets/work/utilify/01.jpg',
+        'assets/work/utilify/02.jpg',
+        'assets/work/utilify/03.jpg',
+        'assets/work/utilify/04.jpg'
+      ]
     },
     canwasa: {
       palette: [
@@ -564,6 +570,16 @@
             </div>
           </section>` : '';
 
+    const heroBlock = (p.shots && p.shots.length)
+      ? `<div class="cs-hero cs-gallery" style="background:${p.tint}">
+          <div class="cs-gallery-track">
+            ${p.shots.map((s, i) => `<figure class="cs-phone"><img src="${s}" alt="${esc(p.title)} — screen ${i + 1}" loading="lazy" /></figure>`).join('')}
+          </div>
+        </div>`
+      : `<div class="cs-hero" style="background:${p.tint}">
+          <img class="cs-shot" src="${p.shot}" alt="${esc(p.title)} — shipped screen" />
+        </div>`;
+
     return `
       <article class="cs-content" data-app="${esc(p.title)}">
         <header class="cs-head">
@@ -575,9 +591,7 @@
           <h2 class="cs-title" id="csTitle">${esc(p.title)}</h2>
           <p class="cs-tag">${esc(p.tag)}</p>
         </header>
-        <div class="cs-hero" style="background:${p.tint}">
-          <img class="cs-shot" src="${p.shot}" alt="${esc(p.title)} — shipped screen" />
-        </div>
+        ${heroBlock}
         <div class="cs-body">
           <section class="cs-block">
             <span class="cs-block-label">The brief</span>
