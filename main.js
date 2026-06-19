@@ -445,6 +445,8 @@
       shots: [
         'assets/work/palettely/splash.jpg',
         'assets/work/palettely/extract.jpg',
+        'assets/work/palettely/export.jpg',
+        'assets/work/palettely/style.jpg',
         'assets/work/palettely/explore.jpg',
         'assets/work/palettely/match.jpg'
       ]
