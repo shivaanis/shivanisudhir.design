@@ -236,9 +236,9 @@ a { color: inherit; text-decoration: none; }
   transform: translateY(-50%);
   z-index: 1;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr;
   gap: clamp(10px, 1vw, 14px);
-  width: clamp(150px, 14vw, 188px);
+  width: clamp(76px, 7.5vw, 94px);
 }
 .hero-grid > button {
   aspect-ratio: 1;

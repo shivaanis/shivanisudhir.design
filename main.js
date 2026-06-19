@@ -252,7 +252,7 @@
       outcome: 'Slow software — an app with the confidence to do one thing, beautifully, and then get out of the way.'
     },
     nightbloom: {
-      n: '03', title: 'Night Bloom', cat: 'Wellness',
+      n: '02', title: 'Night Bloom', cat: 'Wellness',
       tag: 'Designed to be used in the dark.',
       year: '2023', platforms: 'iOS & Android',
       shot: 'assets/work/03-nightbloom.png', icon: 'assets/icons/nightbloom.png',
@@ -268,7 +268,7 @@
       outcome: 'An app that disappears as you fall asleep — the highest compliment a wellness product can earn.'
     },
     palettely: {
-      n: '04', title: 'Palettely', cat: 'Creativity',
+      n: '03', title: 'Palettely', cat: 'Creativity',
       tag: 'A pocket tool, precise enough for designers.',
       year: '2024', platforms: 'iOS & Android',
       shot: 'assets/work/04-palettely.png', icon: 'assets/icons/palettely.png',
@@ -284,7 +284,7 @@
       outcome: 'A pocket tool precise enough that designers keep it open next to Figma.'
     },
     paperlens: {
-      n: '05', title: 'PaperLens', cat: 'Productivity',
+      n: '04', title: 'PaperLens', cat: 'Productivity',
       tag: 'Scan, sign, protect — nothing leaves the device.',
       year: '2024', platforms: 'iOS & Android',
       shot: 'assets/work/05-paperlens.png', icon: 'assets/icons/paperlens.png',
@@ -348,7 +348,7 @@
       outcome: 'A children’s game parents actually trust — the rarest thing in its category.'
     },
     tzc: {
-      n: '09', title: 'Time Zone Connect', cat: 'Productivity',
+      n: '05', title: 'Time Zone Connect', cat: 'Productivity',
       tag: 'A planet, finally legible.',
       year: '2023', platforms: 'iOS & Android',
       shot: 'assets/work/09-tzc.png', icon: 'assets/icons/timezoneconnect.png',
@@ -569,7 +569,7 @@
         <header class="cs-head">
           <img class="cs-icon" src="${p.icon}" alt="" />
           <div class="cs-head-meta">
-            <span class="cs-no">${p.n} / 10</span>
+            <span class="cs-no">${p.n} / 5</span>
             <span class="cs-cat">${esc(p.cat)}</span>
           </div>
           <h2 class="cs-title" id="csTitle">${esc(p.title)}</h2>
