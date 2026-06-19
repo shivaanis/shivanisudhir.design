@@ -475,7 +475,14 @@
         { h: 'Touch the page', p: 'Moved signing and redaction onto the document itself, replacing toolbars with direct manipulation.' },
         { h: 'Show trust quietly', p: 'Added a small, honest on-device indicator, then shipped.' }
       ],
-      typeNote: 'Crisp, high-legibility SF Pro at document scale — built to be read on a scanned page, not just tapped.'
+      typeNote: 'Crisp, high-legibility SF Pro at document scale — built to be read on a scanned page, not just tapped.',
+      shots: [
+        'assets/work/paperlens/splash.jpg',
+        'assets/work/paperlens/library.jpg',
+        'assets/work/paperlens/tools.jpg',
+        'assets/work/paperlens/tools-2.jpg',
+        'assets/work/paperlens/settings.jpg'
+      ]
     },
     astroorbit: {
       palette: [
