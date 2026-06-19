@@ -428,7 +428,14 @@
         { h: 'Forgive the user', p: 'Oversized, generous targets so 1 a.m. precision is never required.' },
         { h: 'Make it breathe', p: 'Drove every transition and breathing guide from one slow easing curve, then shipped.' }
       ],
-      typeNote: 'Low-contrast, larger SF Pro text — sized up and dimmed so it stays legible in the dark without waking you.'
+      typeNote: 'Low-contrast, larger SF Pro text — sized up and dimmed so it stays legible in the dark without waking you.',
+      shots: [
+        'assets/work/nightbloom/splash.jpg',
+        'assets/work/nightbloom/home.jpg',
+        'assets/work/nightbloom/mixer.jpg',
+        'assets/work/nightbloom/scenes.jpg',
+        'assets/work/nightbloom/games.jpg'
+      ]
     },
     palettely: {
       palette: [
