@@ -434,7 +434,8 @@
         'assets/work/nightbloom/home.jpg',
         'assets/work/nightbloom/mixer.jpg',
         'assets/work/nightbloom/scenes.jpg',
-        'assets/work/nightbloom/games.jpg'
+        'assets/work/nightbloom/games.jpg',
+        'assets/work/nightbloom/stories.jpg'
       ]
     },
     palettely: {
