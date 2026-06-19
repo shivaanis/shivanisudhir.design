@@ -444,6 +444,7 @@
       typeNote: 'A deliberately neutral type system — system sans, no personality — so it never colours the colours.',
       shots: [
         'assets/work/palettely/splash.jpg',
+        'assets/work/palettely/home.jpg',
         'assets/work/palettely/extract.jpg',
         'assets/work/palettely/export.jpg',
         'assets/work/palettely/style.jpg',
