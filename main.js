@@ -480,7 +480,6 @@
         'assets/work/paperlens/splash.jpg',
         'assets/work/paperlens/library.jpg',
         'assets/work/paperlens/tools.jpg',
-        'assets/work/paperlens/tools-2.jpg',
         'assets/work/paperlens/settings.jpg'
       ]
     },
