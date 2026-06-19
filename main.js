@@ -441,7 +441,13 @@
         { h: 'Borrow known grammar', p: 'Built moodboards on the same direct-manipulation model designers already trust from desktop tools.' },
         { h: 'Stay neutral & ship', p: 'Kept every surface opinion-free so the user’s colour is always the subject.' }
       ],
-      typeNote: 'A deliberately neutral type system — system sans, no personality — so it never colours the colours.'
+      typeNote: 'A deliberately neutral type system — system sans, no personality — so it never colours the colours.',
+      shots: [
+        'assets/work/palettely/splash.jpg',
+        'assets/work/palettely/extract.jpg',
+        'assets/work/palettely/explore.jpg',
+        'assets/work/palettely/match.jpg'
+      ]
     },
     paperlens: {
       palette: [
