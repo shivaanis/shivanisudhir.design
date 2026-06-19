@@ -527,7 +527,13 @@
         { h: 'People, not offsets', p: 'Let users add humans; the app translates “my colleague in Berlin” into a time.' },
         { h: 'A five-second tool', p: 'Tuned the whole flow to open, answer, and close, then shipped.' }
       ],
-      typeNote: 'Tabular SF Pro figures keep every city’s clock aligned in a column that’s scanned, not read.'
+      typeNote: 'Tabular SF Pro figures keep every city’s clock aligned in a column that’s scanned, not read.',
+      shots: [
+        'assets/work/tzc/clocks.jpg',
+        'assets/work/tzc/availability.jpg',
+        'assets/work/tzc/meet.jpg',
+        'assets/work/tzc/more.jpg'
+      ]
     },
     qito: {
       palette: [
