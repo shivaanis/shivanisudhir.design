@@ -381,6 +381,142 @@
     }
   };
 
+  /* Extra case-study detail — design process, colour palette, type.
+     Palettes are each app's real accent colours (from its tint) + neutrals.
+     Typography is the native system stack (SF Pro / Roboto). */
+  const EXTRAS = {
+    utilify: {
+      palette: [
+        { name: 'Signal Red', hex: '#EF4444' }, { name: 'Warm Orange', hex: '#FB923C' },
+        { name: 'Ink', hex: '#1C1917' }, { name: 'Canvas', hex: '#FAFAF9' }
+      ],
+      process: [
+        { h: 'Frame the drawer', p: 'Audited eighteen single-purpose utilities and found the one flat mental model that could hold them without feeling like a junk drawer.' },
+        { h: 'Explore the home', p: 'Sketched launch structures until a single calm grid won — every tool one tap from open, no nesting.' },
+        { h: 'Build one language', p: 'Designed a single component kit so a converter and a password generator are cut from the same buttons, fields and spacing.' },
+        { h: 'Adapt & ship', p: 'Drove the iOS and Android builds from one set of tokens, then tuned density against real one-handed use.' }
+      ],
+      typeNote: 'Tabular numerals do the heavy lifting — SF Pro’s monospaced figures keep converters and counters from shifting as values change.'
+    },
+    canwasa: {
+      palette: [
+        { name: 'Magenta', hex: '#EC4899' }, { name: 'Aqua', hex: '#06B6D4' },
+        { name: 'Ink', hex: '#18181B' }, { name: 'Shell', hex: '#F4F4F5' }
+      ],
+      process: [
+        { h: 'Frame calm', p: 'Reframed “infinite generative options” as a tool you open to make one beautiful thing — not to be kept busy.' },
+        { h: 'Explore restraint', p: 'Prototyped control models until the canvas could stay the loudest thing on screen and the chrome a whisper.' },
+        { h: 'Systemise the shell', p: 'Desaturated every surface around the canvas so the user’s colour never competes with the app’s.' },
+        { h: 'Pair motion to output', p: 'Tuned generation-paired motion on-device, then shipped with no cloud, account or tracking.' }
+      ],
+      typeNote: 'A near-silent type voice — system sans at modest weights so the generated artwork, never the label, carries the screen.'
+    },
+    nightbloom: {
+      palette: [
+        { name: 'Deep Indigo', hex: '#4338CA' }, { name: 'Soft Indigo', hex: '#6366F1' },
+        { name: 'OLED Black', hex: '#070710' }, { name: 'Slate', hex: '#1B1B27' }
+      ],
+      process: [
+        { h: 'Frame the dark', p: 'Designed for the real context — half-asleep, one-handed, in a dark room — and rewrote every assumption about “tappable”.' },
+        { h: 'Tune for OLED', p: 'Removed pure white entirely; chose every value for a tired eye, not an office-lit review.' },
+        { h: 'Forgive the user', p: 'Oversized, generous targets so 1 a.m. precision is never required.' },
+        { h: 'Make it breathe', p: 'Drove every transition and breathing guide from one slow easing curve, then shipped.' }
+      ],
+      typeNote: 'Low-contrast, larger SF Pro text — sized up and dimmed so it stays legible in the dark without waking you.'
+    },
+    palettely: {
+      palette: [
+        { name: 'Violet', hex: '#8B5CF6' }, { name: 'Orange', hex: '#F97316' },
+        { name: 'Ink', hex: '#1C1917' }, { name: 'Canvas', hex: '#FAFAF9' }
+      ],
+      process: [
+        { h: 'Respect the audience', p: 'Set the craft bar to the user base itself — designers who notice everything.' },
+        { h: 'Explore extraction', p: 'Prototyped one-tap palette pulls that read as an editable draft, not an algorithm’s verdict.' },
+        { h: 'Borrow known grammar', p: 'Built moodboards on the same direct-manipulation model designers already trust from desktop tools.' },
+        { h: 'Stay neutral & ship', p: 'Kept every surface opinion-free so the user’s colour is always the subject.' }
+      ],
+      typeNote: 'A deliberately neutral type system — system sans, no personality — so it never colours the colours.'
+    },
+    paperlens: {
+      palette: [
+        { name: 'Blue', hex: '#2563EB' }, { name: 'Cyan', hex: '#06B6D4' },
+        { name: 'Slate Ink', hex: '#0F172A' }, { name: 'Canvas', hex: '#F8FAFC' }
+      ],
+      process: [
+        { h: 'Fold three jobs', p: 'Mapped scanning, signing and protecting into one flow that never sends a document off the phone.' },
+        { h: 'Lead with the camera', p: 'Made the fastest path the default — open the app and you’re already scanning.' },
+        { h: 'Touch the page', p: 'Moved signing and redaction onto the document itself, replacing toolbars with direct manipulation.' },
+        { h: 'Show trust quietly', p: 'Added a small, honest on-device indicator, then shipped.' }
+      ],
+      typeNote: 'Crisp, high-legibility SF Pro at document scale — built to be read on a scanned page, not just tapped.'
+    },
+    astroorbit: {
+      palette: [
+        { name: 'Nebula Violet', hex: '#7C3AED' }, { name: 'Plasma Indigo', hex: '#6366F1' },
+        { name: 'Void', hex: '#0A0A12' }, { name: 'Starlight', hex: '#E5E7EB' }
+      ],
+      process: [
+        { h: 'Design the feel first', p: 'Treated game-feel — weight, timing, readability — as the primary design problem, before any screen.' },
+        { h: 'Teach by playing', p: 'Made the first three seconds of play the tutorial; no instructional screens.' },
+        { h: 'Keep it legible', p: 'Built a colour and shape system that keeps “you” and “danger” instant even when the screen is full.' },
+        { h: 'Juice, then restrain', p: 'Gave every hop and near-miss weight without tipping into confetti, then shipped.' }
+      ],
+      typeNote: 'Heavy, condensed SF Pro for the HUD and score — legible in a glance while everything else is moving.'
+    },
+    mergerise: {
+      palette: [
+        { name: 'Emerald', hex: '#10B981' }, { name: 'Teal', hex: '#14B8A6' },
+        { name: 'Forest Ink', hex: '#14241E' }, { name: 'Canvas', hex: '#F4FBF6' }
+      ],
+      process: [
+        { h: 'Protect the original', p: 'Drew a hard line — pure 2048 stays sacred; the new idea grows in a layer above it.' },
+        { h: 'Add a quiet second act', p: 'Designed a civilisation that rewards play without ever blocking the move you’re making.' },
+        { h: 'Glanceable progression', p: 'Made five thousand years of building legible in a two-second look.' },
+        { h: 'Make tiles tactile', p: 'Gave the board warm, almost-physical tiles, then shipped.' }
+      ],
+      typeNote: 'Rounded, weighty SF Pro numerals give the merge tiles a tactile, object-in-hand feel.'
+    },
+    fuzzypop: {
+      palette: [
+        { name: 'Bubble Pink', hex: '#EC4899' }, { name: 'Sunny Amber', hex: '#F59E0B' },
+        { name: 'Soft Ink', hex: '#2D2A32' }, { name: 'Cream', hex: '#FFF7ED' }
+      ],
+      process: [
+        { h: 'Brief by subtraction', p: 'Started from a list of refusals — no ads, no timers, no fail states, no shop.' },
+        { h: 'Size for tiny hands', p: 'Built targets and feedback that are huge, soft, immediate and impossible to “lose”.' },
+        { h: 'Keep joy gentle', p: 'Chose a palette and motion soft enough to hand the phone over and walk away.' },
+        { h: 'Earn trust & ship', p: 'Validated with the only critics that matter — very young hands and their parents.' }
+      ],
+      typeNote: 'Big, soft, rounded SF Pro — friendly and high-contrast for eyes still learning what a screen is.'
+    },
+    tzc: {
+      palette: [
+        { name: 'Blue', hex: '#2563EB' }, { name: 'Indigo', hex: '#6366F1' },
+        { name: 'Slate Ink', hex: '#0F172A' }, { name: 'Canvas', hex: '#F8FAFC' }
+      ],
+      process: [
+        { h: 'Reframe the problem', p: 'Treated time zones as a comprehension problem, not a maths one.' },
+        { h: 'Show the overlap', p: 'Designed a single visual band where everyone’s working hours actually meet — a picture, not a sum.' },
+        { h: 'People, not offsets', p: 'Let users add humans; the app translates “my colleague in Berlin” into a time.' },
+        { h: 'A five-second tool', p: 'Tuned the whole flow to open, answer, and close, then shipped.' }
+      ],
+      typeNote: 'Tabular SF Pro figures keep every city’s clock aligned in a column that’s scanned, not read.'
+    },
+    qito: {
+      palette: [
+        { name: 'Ink', hex: '#18181B' }, { name: 'Zinc', hex: '#52525B' },
+        { name: 'Steel', hex: '#A1A1AA' }, { name: 'Canvas', hex: '#FAFAFA' }
+      ],
+      process: [
+        { h: 'Define by refusal', p: 'Wrote the pitch as a list of things it would never be — ads, bloat, accounts.' },
+        { h: 'Launch the camera', p: 'Made the app scan before it finishes opening — zero steps to result.' },
+        { h: 'Collapse to one screen', p: 'Removed tabs, onboarding and settings until the scanner simply was the app.' },
+        { h: 'Respect the result', p: 'Showed clear, actionable, ad-free results that vanish when done, then shipped.' }
+      ],
+      typeNote: 'A single neutral grey type ramp in SF Pro — monochrome on purpose, nothing competing with the scan.'
+    }
+  };
+
   const overlay  = document.getElementById('caseStudy');
   const csScroll = overlay ? overlay.querySelector('.cs-scroll') : null;
   const csClose  = overlay ? overlay.querySelector('.cs-close') : null;
@@ -395,6 +531,39 @@
     const decisions = p.decisions.map((d) =>
       `<li><div><h4>${esc(d.h)}</h4><p>${esc(d.p)}</p></div></li>`
     ).join('');
+
+    const process = (p.process || []).map((s) =>
+      `<li><div><h4>${esc(s.h)}</h4><p>${esc(s.p)}</p></div></li>`
+    ).join('');
+    const processBlock = process ? `
+          <section class="cs-block">
+            <span class="cs-block-label">Design process</span>
+            <ol class="cs-process">${process}</ol>
+          </section>` : '';
+
+    const palette = (p.palette || []).map((c) =>
+      `<li class="cs-swatch"><span class="cs-chip" style="background:${esc(c.hex)}"></span><span class="cs-swatch-name">${esc(c.name)}</span><span class="cs-swatch-hex">${esc(c.hex)}</span></li>`
+    ).join('');
+    const paletteBlock = palette ? `
+          <section class="cs-block">
+            <span class="cs-block-label">Colour palette</span>
+            <ul class="cs-palette">${palette}</ul>
+          </section>` : '';
+
+    const typeBlock = p.typeNote ? `
+          <section class="cs-block">
+            <span class="cs-block-label">Typography</span>
+            <div class="cs-type">
+              <div class="cs-type-specimen" aria-hidden="true">Aa</div>
+              <div class="cs-type-detail">
+                <p class="cs-type-line"><strong>SF Pro Display</strong> — headings &amp; numerals</p>
+                <p class="cs-type-line"><strong>SF Pro Text</strong> — body &amp; controls</p>
+                <p class="cs-type-line"><strong>Roboto</strong> — Android parity</p>
+                <p class="cs-prose cs-type-note">${esc(p.typeNote)}</p>
+              </div>
+            </div>
+          </section>` : '';
+
     return `
       <article class="cs-content" data-app="${esc(p.title)}">
         <header class="cs-head">
@@ -417,11 +586,11 @@
           <section class="cs-block">
             <span class="cs-block-label">My role</span>
             <p class="cs-prose">${esc(p.role)}</p>
-          </section>
+          </section>${processBlock}
           <section class="cs-block">
             <span class="cs-block-label">Design decisions</span>
             <ol class="cs-decisions">${decisions}</ol>
-          </section>
+          </section>${paletteBlock}${typeBlock}
           <section class="cs-block">
             <span class="cs-block-label">Outcome</span>
             <p class="cs-prose cs-outcome">${esc(p.outcome)}</p>
@@ -439,7 +608,7 @@
     if (!p || !overlay) return;
     clearTimeout(closeTimer);
     lastTrigger = trigger || null;
-    csScroll.innerHTML = buildCase(p);
+    csScroll.innerHTML = buildCase({ ...p, ...(EXTRAS[key] || {}) });
     csScroll.scrollTop = 0;
     overlay.setAttribute('aria-hidden', 'false');
     doc.classList.add('cs-open');

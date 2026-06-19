@@ -1324,6 +1324,63 @@ html:not(.js) .scroll-progress { display: none; }
   margin: 0;
 }
 
+/* ---------- Design process ---------- */
+.cs-process {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; gap: clamp(18px, 2.4vw, 26px);
+  counter-reset: cs-step;
+}
+.cs-process li { display: grid; grid-template-columns: auto 1fr; gap: 16px; }
+.cs-process li::before {
+  content: counter(cs-step, decimal-leading-zero);
+  counter-increment: cs-step;
+  font-family: var(--mono); font-size: 11px;
+  color: var(--ink-light); padding-top: 7px;
+}
+.cs-process h4 {
+  font-family: var(--serif); font-weight: 400;
+  font-size: clamp(17px, 1.5vw, 21px);
+  line-height: 1.25; letter-spacing: -0.01em;
+  margin: 0 0 4px; color: var(--ink);
+  font-variation-settings: 'opsz' 144, 'SOFT' 60;
+}
+.cs-process p {
+  font-family: var(--serif);
+  font-size: clamp(15px, 1.1vw, 16px);
+  line-height: 1.55; color: var(--ink-mid); margin: 0;
+}
+
+/* ---------- Colour palette ---------- */
+.cs-palette {
+  list-style: none; margin: 0; padding: 0;
+  display: flex; flex-wrap: wrap; gap: clamp(12px, 1.6vw, 18px);
+}
+.cs-swatch { display: flex; flex-direction: column; gap: 8px; width: 92px; }
+.cs-chip {
+  display: block; width: 100%; aspect-ratio: 1;
+  border-radius: 12px; box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08);
+}
+.cs-swatch-name { font-family: var(--sans); font-size: 12px; line-height: 1.2; color: var(--ink); }
+.cs-swatch-hex {
+  font-family: var(--mono); font-size: 10px;
+  letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-mute);
+}
+
+/* ---------- Typography ---------- */
+.cs-type {
+  display: grid; grid-template-columns: auto 1fr;
+  gap: clamp(20px, 3vw, 36px); align-items: center;
+}
+.cs-type-specimen {
+  font-family: -apple-system, "SF Pro Display", "Segoe UI", Roboto, system-ui, sans-serif;
+  font-weight: 600; font-size: clamp(64px, 9vw, 104px);
+  line-height: 0.85; letter-spacing: -0.04em; color: var(--ink);
+}
+.cs-type-detail { display: grid; gap: 4px; }
+.cs-type-line { font-family: var(--sans); font-size: clamp(14px, 1.1vw, 15px); color: var(--ink-mid); margin: 0; }
+.cs-type-line strong { color: var(--ink); font-weight: 600; }
+.cs-type-note { margin-top: 12px !important; }
+
 .cs-foot {
   padding: clamp(28px, 4vw, 48px) clamp(28px, 5vw, 72px) clamp(40px, 6vw, 72px);
   display: flex; align-items: center; justify-content: space-between;
@@ -1366,7 +1423,10 @@ html:not(.js) .scroll-progress { display: none; }
 .js .case-study.is-open .cs-body .cs-block:nth-child(2) { transition-delay: .32s; }
 .js .case-study.is-open .cs-body .cs-block:nth-child(3) { transition-delay: .38s; }
 .js .case-study.is-open .cs-body .cs-block:nth-child(4) { transition-delay: .44s; }
-.js .case-study.is-open .cs-foot            { transition-delay: .50s; }
+.js .case-study.is-open .cs-body .cs-block:nth-child(5) { transition-delay: .50s; }
+.js .case-study.is-open .cs-body .cs-block:nth-child(6) { transition-delay: .56s; }
+.js .case-study.is-open .cs-body .cs-block:nth-child(7) { transition-delay: .62s; }
+.js .case-study.is-open .cs-foot            { transition-delay: .68s; }
 @media (prefers-reduced-motion: reduce) {
   .js .cs-head, .js .cs-hero, .js .cs-body .cs-block, .js .cs-foot {
     opacity: 1 !important; transform: none !important; transition: none !important;
@@ -1383,6 +1443,8 @@ html.cs-open, html.cs-open body { overflow: hidden; }
   .cs-hero { margin: 16px 18px; aspect-ratio: 4 / 3; }
   .cs-hero .cs-shot { max-width: 52%; }
   .cs-foot { flex-direction: column; align-items: flex-start; }
+  .cs-type { grid-template-columns: 1fr; gap: 14px; }
+  .cs-swatch { width: 78px; }
 }
 
 /* ---------- Print niceties ---------- */
