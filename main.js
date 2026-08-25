@@ -387,8 +387,9 @@
   const EXTRAS = {
     utilify: {
       palette: [
-        { name: 'Periwinkle', hex: '#7A6BF0' }, { name: 'Mint', hex: '#52C7B0' },
-        { name: 'Midnight', hex: '#101028' }, { name: 'Mist', hex: '#E6E7F2' }
+        { name: 'Blue', hex: '#4A9DF0' }, { name: 'Purple', hex: '#8B6BF5' },
+        { name: 'Pink', hex: '#EC5C9E' }, { name: 'Amber', hex: '#F1A93B' },
+        { name: 'Green', hex: '#2EB98A' }, { name: 'Midnight', hex: '#101028' }
       ],
       process: [
         { h: 'Frame the drawer', p: 'Audited eighteen single-purpose utilities and found the one flat mental model that could hold them without feeling like a junk drawer.' },
