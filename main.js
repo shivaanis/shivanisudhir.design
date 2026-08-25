@@ -219,6 +219,37 @@
      9 · CASE STUDY OVERLAY
      ============================================================ */
   const PROJECTS = {
+    creator: {
+      n: '06', frac: ' · Web',
+      title: 'Creator Studio', cat: 'Web · Brand & Marketing',
+      tag: 'A portfolio that sells the work, not the person.',
+      year: '2026', platforms: 'Responsive web',
+      icon: 'assets/icons/ugc.png',
+      shot: 'assets/work/creator/site.jpg',
+      url: 'https://shivaanis.github.io/shivanisudhir.ugc/',
+      visitLabel: 'Visit the live site',
+      web: true,
+      addr: 'shivaanis.github.io/shivanisudhir.ugc',
+      tint: 'radial-gradient(ellipse 120% 95% at 50% 30%, rgba(183,110,121,0.32), rgba(110,36,51,0.14) 60%, rgba(110,36,51,0.04) 100%)',
+      brief: 'A lifestyle UGC creator needed a site that reads as premium at a glance and turns a cold brand visitor into an enquiry — without a single stock template.',
+      role: 'End-to-end — brand direction, art direction, the full responsive build in HTML, CSS and JavaScript, and the copy.',
+      decisions: [
+        { h: 'Editorial, not influencer.', p: 'A serif display against a quiet sans, generous margins, and a warm neutral palette — the page carries itself like a print magazine, so the work reads as considered rather than sold.' },
+        { h: 'The reel grid is the product.', p: 'Muted-first video in phone frames, lazy-loaded and autoplaying in view, grouped by theme — the portfolio proves the craft before any copy asks for the booking.' },
+        { h: 'One clear path to enquiry.', p: 'Every section resolves toward a single call to action. Packages, usage-rights and results remove the questions a brand has before they email.' }
+      ],
+      palette: [
+        { name: 'Burgundy', hex: '#6E2433' }, { name: 'Rose', hex: '#B76E79' },
+        { name: 'Cream', hex: '#EFE7DA' }, { name: 'Ink', hex: '#2B2420' }
+      ],
+      fonts: [
+        { n: 'Cormorant Garamond', role: 'display & headlines' },
+        { n: 'Jost', role: 'body & UI' },
+        { n: 'Pinyon Script', role: 'accent flourishes' }
+      ],
+      typeNote: 'A serif display over a clean geometric sans, with a script used sparingly — an editorial voice that signals craft and calm, not hype.',
+      outcome: 'A live, responsive site that positions a solo creator like an established studio — and gives brands one obvious reason to reach out.'
+    },
     utilify: {
       n: '01', title: 'Utilify', cat: 'Utilities · Flagship',
       tag: 'Your everyday tech toolkit.',
@@ -591,15 +622,18 @@
             <ul class="cs-palette">${palette}</ul>
           </section>` : '';
 
+    const typeLines = (p.fonts && p.fonts.length)
+      ? p.fonts.map((f) => `<p class="cs-type-line"><strong>${esc(f.n)}</strong> — ${esc(f.role)}</p>`).join('')
+      : `<p class="cs-type-line"><strong>SF Pro Display</strong> — headings &amp; numerals</p>
+                <p class="cs-type-line"><strong>SF Pro Text</strong> — body &amp; controls</p>
+                <p class="cs-type-line"><strong>Roboto</strong> — Android parity</p>`;
     const typeBlock = p.typeNote ? `
           <section class="cs-block">
             <span class="cs-block-label">Typography</span>
             <div class="cs-type">
               <div class="cs-type-specimen" aria-hidden="true">Aa</div>
               <div class="cs-type-detail">
-                <p class="cs-type-line"><strong>SF Pro Display</strong> — headings &amp; numerals</p>
-                <p class="cs-type-line"><strong>SF Pro Text</strong> — body &amp; controls</p>
-                <p class="cs-type-line"><strong>Roboto</strong> — Android parity</p>
+                ${typeLines}
                 <p class="cs-prose cs-type-note">${esc(p.typeNote)}</p>
               </div>
             </div>
@@ -613,7 +647,14 @@
             </div>
           </section>` : '';
 
-    const heroBlock = (p.shots && p.shots.length)
+    const heroBlock = p.web
+      ? `<div class="cs-hero cs-hero--web" style="background:${p.tint}">
+          <figure class="cs-browser">
+            <span class="cs-browser-bar" aria-hidden="true"><i></i><i></i><i></i><span class="cs-browser-addr">${esc(p.addr || '')}</span></span>
+            <img class="cs-browser-shot" src="${p.shot}" alt="${esc(p.title)} — live site" loading="lazy" />
+          </figure>
+        </div>`
+      : (p.shots && p.shots.length)
       ? `<div class="cs-hero cs-gallery" style="background:${p.tint}">
           <div class="cs-gallery-track">
             ${p.shots.map((s, i) => `<figure class="cs-phone"><img src="${s}" alt="${esc(p.title)} — screen ${i + 1}" loading="lazy" /></figure>`).join('')}
@@ -628,7 +669,7 @@
         <header class="cs-head">
           <img class="cs-icon" src="${p.icon}" alt="" />
           <div class="cs-head-meta">
-            <span class="cs-no">${p.n} / 5</span>
+            <span class="cs-no">${p.n}${p.frac || ' / 5'}</span>
             <span class="cs-cat">${esc(p.cat)}</span>
           </div>
           <h2 class="cs-title" id="csTitle">${esc(p.title)}</h2>
@@ -654,7 +695,7 @@
           </section>
         </div>
         <footer class="cs-foot">
-          <a class="cs-visit" href="${p.url}" target="_blank" rel="noopener">Visit the live app <span>↗</span></a>
+          <a class="cs-visit" href="${p.url}" target="_blank" rel="noopener">${esc(p.visitLabel || 'Visit the live app')} <span>↗</span></a>
           <span class="cs-foot-meta">${esc(p.year)} · ${esc(p.platforms)}</span>
         </footer>
       </article>`;

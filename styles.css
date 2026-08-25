@@ -1264,6 +1264,49 @@ html:not(.js) .scroll-progress { display: none; }
   filter: drop-shadow(0 38px 60px rgba(20, 14, 8, 0.48));
 }
 
+/* ---------- Web project — browser-framed site shot ---------- */
+.cs-hero--web {
+  aspect-ratio: auto;
+  padding: clamp(24px, 4vw, 52px);
+}
+.cs-browser {
+  margin: 0;
+  width: 100%;
+  max-width: 760px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 40px 70px -24px rgba(20, 14, 8, 0.55), 0 4px 12px rgba(20, 14, 8, 0.2);
+}
+.cs-browser-bar {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  height: 34px;
+  padding: 0 14px;
+  background: #e7e0d6;
+  border-bottom: 1px solid rgba(20, 14, 8, 0.08);
+}
+.cs-browser-bar i {
+  width: 11px; height: 11px;
+  border-radius: 50%;
+  background: #c6bfb2;
+}
+.cs-browser-addr {
+  margin-left: 12px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: #8a8378;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.cs-browser-shot {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 /* ---------- Mockup gallery — horizontal device shelf ---------- */
 .cs-gallery {
   aspect-ratio: auto;
