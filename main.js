@@ -387,8 +387,8 @@
   const EXTRAS = {
     utilify: {
       palette: [
-        { name: 'Signal Red', hex: '#EF4444' }, { name: 'Warm Orange', hex: '#FB923C' },
-        { name: 'Ink', hex: '#1C1917' }, { name: 'Canvas', hex: '#FAFAF9' }
+        { name: 'Periwinkle', hex: '#7A6BF0' }, { name: 'Mint', hex: '#52C7B0' },
+        { name: 'Midnight', hex: '#101028' }, { name: 'Mist', hex: '#E6E7F2' }
       ],
       process: [
         { h: 'Frame the drawer', p: 'Audited eighteen single-purpose utilities and found the one flat mental model that could hold them without feeling like a junk drawer.' },
@@ -419,8 +419,8 @@
     },
     nightbloom: {
       palette: [
-        { name: 'Deep Indigo', hex: '#4338CA' }, { name: 'Soft Indigo', hex: '#6366F1' },
-        { name: 'OLED Black', hex: '#070710' }, { name: 'Slate', hex: '#1B1B27' }
+        { name: 'Moss', hex: '#57BC8E' }, { name: 'Lavender', hex: '#9B6BD6' },
+        { name: 'Forest', hex: '#070D09' }, { name: 'Mist', hex: '#DCE6DE' }
       ],
       process: [
         { h: 'Frame the dark', p: 'Designed for the real context — half-asleep, one-handed, in a dark room — and rewrote every assumption about “tappable”.' },
@@ -440,8 +440,8 @@
     },
     palettely: {
       palette: [
-        { name: 'Violet', hex: '#8B5CF6' }, { name: 'Orange', hex: '#F97316' },
-        { name: 'Ink', hex: '#1C1917' }, { name: 'Canvas', hex: '#FAFAF9' }
+        { name: 'Slate', hex: '#64748B' }, { name: 'Silver', hex: '#A8ADB6' },
+        { name: 'Canvas', hex: '#EFEBEC' }, { name: 'Ink', hex: '#201D24' }
       ],
       process: [
         { h: 'Respect the audience', p: 'Set the craft bar to the user base itself — designers who notice everything.' },
@@ -466,8 +466,8 @@
     },
     paperlens: {
       palette: [
-        { name: 'Blue', hex: '#2563EB' }, { name: 'Cyan', hex: '#06B6D4' },
-        { name: 'Slate Ink', hex: '#0F172A' }, { name: 'Canvas', hex: '#F8FAFC' }
+        { name: 'Azure', hex: '#3E8FDE' }, { name: 'Teal', hex: '#17A98C' },
+        { name: 'Ink Navy', hex: '#0D1017' }, { name: 'Mist', hex: '#DCE3EC' }
       ],
       process: [
         { h: 'Fold three jobs', p: 'Mapped scanning, signing and protecting into one flow that never sends a document off the phone.' },
@@ -524,8 +524,8 @@
     },
     tzc: {
       palette: [
-        { name: 'Blue', hex: '#2563EB' }, { name: 'Indigo', hex: '#6366F1' },
-        { name: 'Slate Ink', hex: '#0F172A' }, { name: 'Canvas', hex: '#F8FAFC' }
+        { name: 'Indigo', hex: '#4C6EF0' }, { name: 'Amber', hex: '#E08A3C' },
+        { name: 'Midnight', hex: '#0B0F1A' }, { name: 'Mist', hex: '#DDE1EC' }
       ],
       process: [
         { h: 'Reframe the problem', p: 'Treated time zones as a comprehension problem, not a maths one.' },
