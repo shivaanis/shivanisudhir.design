@@ -1306,6 +1306,26 @@ html:not(.js) .scroll-progress { display: none; }
   width: 100%;
   height: auto;
 }
+.cs-browser-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(20px, 3vw, 34px);
+  width: 100%;
+}
+.cs-webshot {
+  margin: 0;
+  width: 100%;
+  max-width: 760px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 24px 50px -22px rgba(20, 14, 8, 0.5);
+}
+.cs-webshot img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
 
 /* ---------- Mockup gallery — horizontal device shelf ---------- */
 .cs-gallery {

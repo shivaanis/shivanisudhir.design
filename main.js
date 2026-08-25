@@ -226,6 +226,12 @@
       year: '2026', platforms: 'Responsive web',
       icon: 'assets/icons/ugc.png',
       shot: 'assets/work/creator/site.jpg',
+      shots: [
+        'assets/work/creator/site.jpg',
+        'assets/work/creator/why.jpg',
+        'assets/work/creator/collabs.jpg',
+        'assets/work/creator/packages.jpg'
+      ],
       url: 'https://shivaanis.github.io/shivanisudhir.ugc/',
       visitLabel: 'Visit the live site',
       web: true,
@@ -647,12 +653,18 @@
             </div>
           </section>` : '';
 
+    const webShots = (p.shots && p.shots.length) ? p.shots : [p.shot];
     const heroBlock = p.web
       ? `<div class="cs-hero cs-hero--web" style="background:${p.tint}">
-          <figure class="cs-browser">
+          <div class="cs-browser-stack">
+            ${webShots.map((s, i) => i === 0
+              ? `<figure class="cs-browser">
             <span class="cs-browser-bar" aria-hidden="true"><i></i><i></i><i></i><span class="cs-browser-addr">${esc(p.addr || '')}</span></span>
-            <img class="cs-browser-shot" src="${p.shot}" alt="${esc(p.title)} — live site" loading="lazy" />
-          </figure>
+            <img class="cs-browser-shot" src="${s}" alt="${esc(p.title)} — live site" loading="lazy" />
+          </figure>`
+              : `<figure class="cs-webshot"><img src="${s}" alt="${esc(p.title)} — section ${i + 1}" loading="lazy" /></figure>`
+            ).join('')}
+          </div>
         </div>`
       : (p.shots && p.shots.length)
       ? `<div class="cs-hero cs-gallery" style="background:${p.tint}">
