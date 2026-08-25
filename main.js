@@ -419,7 +419,7 @@
     },
     nightbloom: {
       palette: [
-        { name: 'Moss', hex: '#57BC8E' }, { name: 'Lavender', hex: '#9B6BD6' },
+        { name: 'Amethyst', hex: '#A855F7' }, { name: 'Moss', hex: '#57BC8E' },
         { name: 'Forest', hex: '#070D09' }, { name: 'Mist', hex: '#DCE6DE' }
       ],
       process: [
@@ -440,8 +440,9 @@
     },
     palettely: {
       palette: [
-        { name: 'Slate', hex: '#64748B' }, { name: 'Silver', hex: '#A8ADB6' },
-        { name: 'Canvas', hex: '#EFEBEC' }, { name: 'Ink', hex: '#201D24' }
+        { name: 'Coral', hex: '#F76F5C' }, { name: 'Amber', hex: '#F5A623' },
+        { name: 'Fern', hex: '#3FB984' }, { name: 'Teal', hex: '#21B0A6' },
+        { name: 'Azure', hex: '#4C8DF0' }, { name: 'Violet', hex: '#8B5CF6' }
       ],
       process: [
         { h: 'Respect the audience', p: 'Set the craft bar to the user base itself — designers who notice everything.' },
