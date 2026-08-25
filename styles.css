@@ -1326,6 +1326,21 @@ html:not(.js) .scroll-progress { display: none; }
   width: 100%;
   height: auto;
 }
+/* Section shots — staggered two-up, not a plain stack */
+.cs-webgrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(16px, 2.5vw, 30px);
+  width: 100%;
+  max-width: 880px;
+  align-items: start;
+}
+.cs-webgrid .cs-webshot { max-width: none; }
+.cs-webgrid .cs-webshot:nth-child(2) { margin-top: clamp(28px, 5vw, 64px); }
+@media (max-width: 620px) {
+  .cs-webgrid { grid-template-columns: 1fr; }
+  .cs-webgrid .cs-webshot:nth-child(2) { margin-top: 0; }
+}
 
 /* ---------- Mockup gallery — horizontal device shelf ---------- */
 .cs-gallery {

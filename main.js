@@ -229,8 +229,7 @@
       shots: [
         'assets/work/creator/site.jpg',
         'assets/work/creator/why.jpg',
-        'assets/work/creator/collabs.jpg',
-        'assets/work/creator/packages.jpg'
+        'assets/work/creator/collabs.jpg'
       ],
       url: 'https://shivaanis.github.io/shivanisudhir.ugc/',
       visitLabel: 'Visit the live site',
@@ -663,13 +662,13 @@
     const heroBlock = p.web
       ? `<div class="cs-hero cs-hero--web" style="background:${p.tint}">
           <div class="cs-browser-stack">
-            ${webShots.map((s, i) => i === 0
-              ? `<figure class="cs-browser">
-            <span class="cs-browser-bar" aria-hidden="true"><i></i><i></i><i></i><span class="cs-browser-addr">${esc(p.addr || '')}</span></span>
-            <img class="cs-browser-shot" src="${s}" alt="${esc(p.title)} — live site" loading="lazy" />
-          </figure>`
-              : `<figure class="cs-webshot"><img src="${s}" alt="${esc(p.title)} — section ${i + 1}" loading="lazy" /></figure>`
-            ).join('')}
+            <figure class="cs-browser">
+              <span class="cs-browser-bar" aria-hidden="true"><i></i><i></i><i></i><span class="cs-browser-addr">${esc(p.addr || '')}</span></span>
+              <img class="cs-browser-shot" src="${webShots[0]}" alt="${esc(p.title)} — live site" loading="lazy" />
+            </figure>
+            ${webShots.length > 1 ? `<div class="cs-webgrid">
+              ${webShots.slice(1).map((s, i) => `<figure class="cs-webshot"><img src="${s}" alt="${esc(p.title)} — section ${i + 2}" loading="lazy" /></figure>`).join('')}
+            </div>` : ''}
           </div>
         </div>`
       : (p.shots && p.shots.length)
