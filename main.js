@@ -239,6 +239,12 @@
       tint: 'radial-gradient(ellipse 120% 95% at 50% 30%, rgba(183,110,121,0.32), rgba(110,36,51,0.14) 60%, rgba(110,36,51,0.04) 100%)',
       brief: 'A lifestyle UGC creator needed a site that reads as premium at a glance and turns a cold brand visitor into an enquiry — without a single stock template.',
       role: 'End-to-end — brand direction, art direction, the full responsive build in HTML, CSS and JavaScript, and the copy.',
+      process: [
+        { h: 'Positioning before pixels', p: 'Started from the business goal — turn a cold brand visitor into an enquiry — and let that decide every section before a single layout choice.' },
+        { h: 'Build an editorial system', p: 'Set the serif-and-sans pairing, warm palette and spacing rhythm as reusable tokens, so the whole site speaks in one considered voice.' },
+        { h: 'Code it responsive by hand', p: 'Built in plain HTML, CSS and JavaScript — muted-first video, lazy-loaded and autoplaying in view, so the reel portfolio still performs on a phone.' },
+        { h: 'Cut to the ask, then ship', p: 'Pruned anything that didn’t move a visitor toward the enquiry, shipped, and refined the copy and pacing against real brand feedback.' }
+      ],
       decisions: [
         { h: 'Editorial, not influencer.', p: 'A serif display against a quiet sans, generous margins, and a warm neutral palette — the page carries itself like a print magazine, so the work reads as considered rather than sold.' },
         { h: 'The reel grid is the product.', p: 'Muted-first video in phone frames, lazy-loaded and autoplaying in view, grouped by theme — the portfolio proves the craft before any copy asks for the booking.' },
